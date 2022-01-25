@@ -1,30 +1,30 @@
-Git Start Branch
+## Creating a new JEE 8 Web Application using Maven Archetypes
 
-https://github.com/NicorDesigns/eclipsejee8helloworld/tree/main
+### 1. Create a new Eclipse project using parent-pom from mojo pom-root archetype
 
-Create parent-pom from mojo archetype and demo
+#### Check in into Github using Eclipse (Understand Token Generation process)
 
-Check in into Github using Eclipse (Explain Token Generation process)
-
- https://stackoverflow.com/questions/32527522/how-to-github-two-factor-authentication-with-eclipse
+#### [Github two factor Authentication with Eclipse](https://stackoverflow.com/questions/32527522/how-to-github-two-factor-authentication-with-eclipse)
  
-Create a child module inside the POM module using:
+#### [JEE 8 Webapp Git Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/pom-root-start)
 
- https://mvnrepository.com/artifact/org.apache.maven.archetypes/maven-archetype-webapp version 1.4
+### 2. Create a child module inside the POM module using:
  
-Group Id :  com.nicordesigns
+#### [Maven Archetype Webapp 1.4](https://mvnrepository.com/artifact/org.apache.maven.archetypes/maven-archetype-webapp version 1.4)
+ 
+##### Group Id :  com.nicordesigns
 
-Artifact Id : jee8webarchetype
+##### Artifact Id : jee8webarchetype
 
-Package : com.nicordesigns.jee8webarchetype
+##### Package : com.nicordesigns.jee8webarchetype
 
-Update the generated module to JEE8 in Eclipse
+### 3. Update the generated module to JEE8 in Eclipse
 
-Show Eclipse Problem View - Go through listed Problems and resolve them
+##### Show Eclipse Problem View - Go through listed Problems and resolve them
 
-Upgrade to Java 1.8
+##### Upgrade to Java 1.8
 
-Add the following Maven Dependency:
+##### Add the following Maven Dependency:
  
 	<dependency>
             <groupId>javax.servlet</groupId>
@@ -33,17 +33,20 @@ Add the following Maven Dependency:
             <scope>provided</scope>
     </dependency>
 
-Update the Maven Project using the Eclipse option
+##### Update the Maven Project using the Eclipse option
 
-Go through and resolve all the warnings in the Eclipse Problem View and talk through each of them
+### 4. Update web.xml and all related Eclipse Facets
 
-Update web.xml and all related Eclipse Facets
+##### Add Tomcat 9 runtime in Facet
 
-Add Tomcat 9 runtime in Facet
+##### Demonstrate that the JSP Hello Page Show
 
-Demonstrate that the JSP Hello Page Show
+### 5. Finally go through and resolve all the warnings in the Eclipse Problem View
 
-Check in the end git branch of this slide show 
+#### 6. Check in the end git branch of this slide show
+
+#### [JEE 8 Webapp Git End Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/pom-root-jee8webapp-end)
+ 
 
 
     

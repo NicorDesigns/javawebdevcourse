@@ -1,50 +1,33 @@
-Git Start Branch
+## Updating the JEE 8 Web Application Module with a Hello World Servlet
 
-https://github.com/NicorDesigns/eclipsejee8helloworld/tree/main
+#### [JEE 8 Hello World Servlet Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-servlet-start)
 
-Create parent-pom from mojo archetype and demo
+### 1. Add the actual servlet code
 
-Check in into Github using Eclipse (Explain Token Generation process)
+##### com.nicordesigns.HelloWorldServlet
 
- https://stackoverflow.com/questions/32527522/how-to-github-two-factor-authentication-with-eclipse
- 
-Create a child module inside the POM module using:
+### 2. Add the servlet config to web.xml
 
- https://mvnrepository.com/artifact/org.apache.maven.archetypes/maven-archetype-webapp version 1.4
- 
-Group Id :  com.nicordesigns
+##### com.nicordesigns.HelloWorldServlet
 
-Artifact Id : jee8webarchetype
+	<servlet>
+		<servlet-name>helloServlet</servlet-name>
+		<servlet-class>com.nicordesigns.HelloWorldServlet</servlet-class>
+	</servlet>
 
-Package : com.nicordesigns.jee8webarchetype
+	<servlet-mapping>
+		<servlet-name>helloServlet</servlet-name>
+		<url-pattern>/greeting</url-pattern>
+	</servlet-mapping>
 
-Update the generated module to JEE8 in Eclipse
 
-Show Eclipse Problem View - Go through listed Problems and resolve them
+#####  
 
-Upgrade to Java 1.8
+### 4. Demonstrate that the Hello World Servlet works
 
-Add the following Maven Dependency:
- 
-	<dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-    </dependency>
-
-Update the Maven Project using the Eclipse option
-
-Go through and resolve all the warnings in the Eclipse Problem View and talk through each of them
-
-Update web.xml and all related Eclipse Facets
-
-Add Tomcat 9 runtime in Facet
-
-Demonstrate that the JSP Hello Page Show
 
 Check in the end git branch of this slide show 
-
+#### [JEE 8 Hello World Servlet Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-servlet-finish)
 
     
 
