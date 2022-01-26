@@ -20,7 +20,7 @@
 
 	<servlet-mapping>
 		<servlet-name>helloServlet</servlet-name>
-		<url-pattern>/greeting</url-pattern>
+		<url-pattern>/hello-world</url-pattern>
 	</servlet-mapping>
 
 

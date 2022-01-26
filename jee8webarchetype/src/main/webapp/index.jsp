@@ -4,6 +4,6 @@
   </head>
 <body>
 <h2>Hello World!</h2>
-<a href="greeting">Go to greeting</a>.
+<a href="hello-world">Say Hello World...</a>.
 </body>
 </html>

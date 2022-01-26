@@ -2,7 +2,7 @@
 
 An introduction to Java Web Development with JEE 8:
 
-1. [Creating a basic JEE 8 web app from the Maven Archetype](docs/jee8setup.md)
+1. [Creating a basic JEE 8 web app from the Maven Archetype](jee8setup.md)
 
-2. [Expand the Web App to include a Hello World Servlet](docs/jee8servlet.md)
+2. [Expand the Web App to include a Hello World Servlet](jee8servlet.md)
 
