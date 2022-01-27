@@ -18,16 +18,24 @@
 
 ##### We will look at all the methods in HttpServlet with the help of Eclipse Source browser - doGet, doPost etc.
 Creating a Servlet Class
-Summarize the main points of - What to Extend
 					
 Servlet inherets from GenericServlet, protocol independent with a single service method
+
 Http Request will be handled by the HttpServlet and the overriden HTTP Protocol methods
 						
-Explaining how the code in HelloWorld Servlet works 
+How the code in HelloWorld Servlet works 
 
 Calling getWriter on response parameter returns a Printwriter then using println() to output text to the output stream
 						
-##### We will also look at the init() and destroy methods by overriding them  
+##### We will also look at the init() and destroy() methods by overriding them
+
+init() sometimes runs when the servlet container starts up the web app (can be configured) otherwise when the servlet are running or responding on it very first run - so we use it to set up resources like database connections etc
+
+destroy() runs when the servlet Container shuts down - use it to clean up resource like database connections etc - important to use this and not the garbage collection code
+
+
+
+      
 
 ### 2. Add the servlet config to web.xml
 
@@ -40,7 +48,7 @@ Calling getWriter on response parameter returns a Printwriter then using println
 
 	<servlet-mapping>
 		<servlet-name>helloServlet</servlet-name>
-		<url-pattern>/greeting</url-pattern>
+		<url-pattern>/hello-world</url-pattern>
 	</servlet-mapping>
 
 
