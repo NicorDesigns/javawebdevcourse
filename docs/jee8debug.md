@@ -16,6 +16,10 @@
 
 ##### This will stop at the servlet line to debug and open the Eclipse Debug Perspective where you can track the stack 
 
+### 4. Add basic logging to the JEE 8 Web App
+
+##### This will allow you to log status and errors 
+ 
 
 Check in the end git branch of this slide show 
 #### [JEE 8 Hello World Servlet Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-servlet-finish)
