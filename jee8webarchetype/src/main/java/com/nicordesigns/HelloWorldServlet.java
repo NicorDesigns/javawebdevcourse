@@ -4,6 +4,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import java.io.IOException;
 
 public class HelloWorldServlet extends HttpServlet {
@@ -12,6 +15,8 @@ public class HelloWorldServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private static Logger LOGGER = LogManager.getLogger(HelloWorldServlet.class);
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -20,11 +25,11 @@ public class HelloWorldServlet extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		System.out.println("Servlet " + this.getServletName() + " has started.");
+		LOGGER.info("Servlet " + this.getServletName() + " has started.");
 	}
 
 	@Override
 	public void destroy() {
-		System.out.println("Servlet " + this.getServletName() + " has stopped.");
+		LOGGER.info("Servlet " + this.getServletName() + " has stopped.");
 	}
 }

@@ -18,6 +18,42 @@
 
 ### 4. Add basic logging to the JEE 8 Web App
 
+##### [Apache Log4J 2](https://logging.apache.org/log4j/2.x/index.html)
+
+##### Add Maven Dependencies
+	
+	<dependency>
+    	<groupId>org.apache.logging.log4j</groupId>
+    	<artifactId>log4j-api</artifactId>
+    	<version>2.17.0</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>2.17.0</version>
+	</dependency>
+	
+##### Add log4j.properties
+	
+	appenders=xyz
+	appender.xyz.type=Console
+	appender.xyz.name=myOutput
+	appender.xyz.layout.type=PatternLayout
+	appender.xyz.layout.pattern=[%d{yy-MMM-dd HH:mm:ss:SSS}] [%p] [%c{1}:%L] - %m%n
+	rootLogger.level=debug
+	rootLogger.appenderRefs=abc
+	rootLogger.appenderRef.abc.ref=myOutput
+
+	
+##### Add debugging code to the Servlet
+
+	private static Logger LOGGER = LogManager.getLogger(HelloWorldServlet.class);
+	
+	LOGGER.info("Servlet " + this.getServletName() + " has started.");
+	
+	LOGGER.info("Servlet " + this.getServletName() + " has stopped.");	
+
+
 ##### This will allow you to log status and errors 
  
 
