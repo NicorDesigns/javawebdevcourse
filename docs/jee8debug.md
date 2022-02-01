@@ -34,7 +34,7 @@
 	    <version>2.17.0</version>
 	</dependency>
 	
-##### Add log4j.properties
+##### Add log4j.properties (configuration)
 	
 	appenders=xyz
 	appender.xyz.type=Console
