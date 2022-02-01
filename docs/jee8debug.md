@@ -16,9 +16,10 @@
 
 ##### This will stop at the servlet line to debug and open the Eclipse Debug Perspective where you can track the stack 
 
-### 4. Add basic logging to the JEE 8 Web App
+### 4. Add basic logging to the JEE 8 Web App - https://www.baeldung.com/java-logging-intro
 
 ##### [Apache Log4J 2](https://logging.apache.org/log4j/2.x/index.html)
+##### Recently had a big security issue which you can read all about on their site
 
 ##### Add Maven Dependencies
 	
