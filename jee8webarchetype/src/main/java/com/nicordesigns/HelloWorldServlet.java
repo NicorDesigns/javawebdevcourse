@@ -10,9 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import java.io.IOException;
 
 public class HelloWorldServlet extends HttpServlet {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private static Logger LOGGER = LogManager.getLogger(HelloWorldServlet.class);
