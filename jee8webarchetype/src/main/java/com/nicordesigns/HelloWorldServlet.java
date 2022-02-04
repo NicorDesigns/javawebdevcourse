@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 
 @WebServlet(
         name = "helloWorldServlet",
-        urlPatterns = {"/greeting", "/salutation", "/wazzup"},
+        urlPatterns = {"/greeting", "/hello-world"},
         loadOnStartup = 1
 )
 public class HelloWorldServlet extends HttpServlet {

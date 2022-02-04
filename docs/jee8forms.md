@@ -1,64 +1,117 @@
 ## Using Forms and parameters in the JEE 8 Web Hello World Servlet module
 
-#### [JEE 8 Web Forms Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-debug-start)
+##### [JEE 8 Web Forms Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-debug-start)
 
-### 1. In Eclipse select Window -> Preferences -> Server -> Runtime Environments -> Select Tomcat 9 and Edit
+### 1. Update the HelloWorldServlet to use annotations and present the user with an input form
 
-###### Ensure that your Tomcat 9 server is set up correctly
+###### Use the @WebServlet annotation to decorate the HelloWorldServlet
 
-### 2. Now add in-line java code and a debug point to the JSP page
+	@WebServlet(
+        name = "helloServlet",
+        urlPatterns = {"/greeting", "/salutation", "/wazzup"},
+        loadOnStartup = 1
+	)
 
-##### Run the Web App in Debug mode
+###### Expand the HelloWorldServlet to present the User with an input form
 
-##### This will stop at the JSP line to debug and open the Eclipse Debug Perspective where you can track the stack 
+	String user = request.getParameter("user");
+        if(user == null)
+            user = HelloServlet.DEFAULT_USER;
 
-### 4. Repeat the process with the debug point in the servlet
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
 
-##### This will stop at the servlet line to debug and open the Eclipse Debug Perspective where you can track the stack 
-
-### 4. Add basic logging to the JEE 8 Web App
-
-##### [Apache Log4J 2](https://logging.apache.org/log4j/2.x/index.html)
-
-##### Add Maven Dependencies
+        PrintWriter writer = response.getWriter();
+        writer.append("<!DOCTYPE html>\r\n")
+              .append("<html>\r\n")
+              .append("    <head>\r\n")
+              .append("        <title>Hello User Application</title>\r\n")
+              .append("    </head>\r\n")
+              .append("    <body>\r\n")
+              .append("        Hello, ").append(user).append("!<br/><br/>\r\n")
+              .append("        <form action=\"greeting\" method=\"POST\">\r\n")
+              .append("            Enter your name:<br/>\r\n")
+              .append("            <input type=\"text\" name=\"user\"/><br/>\r\n")
+              .append("            <input type=\"submit\" value=\"Submit\"/>\r\n")
+              .append("        </form>\r\n")
+              .append("    </body>\r\n")
+              .append("</html>\r\n");
 	
-	<dependency>
-    	<groupId>org.apache.logging.log4j</groupId>
-    	<artifactId>log4j-api</artifactId>
-    	<version>2.17.0</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.apache.logging.log4j</groupId>
-	    <artifactId>log4j-core</artifactId>
-	    <version>2.17.0</version>
-	</dependency>
-	
-##### Add log4j.properties
-	
-	appenders=xyz
-	appender.xyz.type=Console
-	appender.xyz.name=myOutput
-	appender.xyz.layout.type=PatternLayout
-	appender.xyz.layout.pattern=[%d{yy-MMM-dd HH:mm:ss:SSS}] [%p] [%c{1}:%L] - %m%n
-	rootLogger.level=debug
-	rootLogger.appenderRefs=abc
-	rootLogger.appenderRef.abc.ref=myOutput
+### 2. Remove or comment out the Servlet config code in web.xml and update the index.jsp landing page code
 
+	<!-- 	<servlet> -->
+	<!-- 		<servlet-name>helloServlet</servlet-name> -->
+	<!-- 		<servlet-class>com.nicordesigns.HelloWorldServlet</servlet-class> -->
+	<!-- 	</servlet> -->
 	
-##### Add debugging code to the Servlet
-
-	private static Logger LOGGER = LogManager.getLogger(HelloWorldServlet.class);
+	<!-- 	<servlet-mapping> -->
+	<!-- 		<servlet-name>helloServlet</servlet-name> -->
+	<!-- 		<url-pattern>/hello-world</url-pattern> -->
+	<!-- 	</servlet-mapping> -->
 	
-	LOGGER.info("Servlet " + this.getServletName() + " has started.");
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
 	
-	LOGGER.info("Servlet " + this.getServletName() + " has stopped.");	
+	<html>
+	<head>
+	    <title>Hello, World Application Index File</title>
+	  </head>
+	<body>
+	<h2>Hello World!</h2>
+	<a href="hello-world">Present the Hello World Input Form...</a>.
+	Java runtime version: <%= System.getProperty("java.version") %>
+	</body>
+	</html>
+	
+	
+
+##### Run the Web App
+
+##### Demonstrate that both the doGet() and doPost() method will accept and display the name parameter by using URL and Form
+
+We will make use of logging here for better understanding 
+
+### 4. Now add the Multi-Part Form Servlet
 
 
-##### This will allow you to log status and errors 
+	response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+
+        PrintWriter writer = response.getWriter();
+        writer.append("<!DOCTYPE html>\r\n")
+        .append("<html>\r\n")
+        .append("    <head>\r\n")
+        .append("        <title>Hello World Application</title>\r\n")
+        .append("    </head>\r\n")
+        .append("    <body>\r\n")
+        .append("        <form action=\"checkboxes\" method=\"POST\">\r\n")
+        .append("Select the colors you like:<br/>\r\n")
+        .append("<input type=\"checkbox\" name=\"color\" value=\"Yellow\"/>")
+        .append(" Yellow<br/>\r\n")
+        .append("<input type=\"checkbox\" name=\"color\" value=\"Black\"/>")
+        .append(" Black<br/>\r\n")
+        .append("<input type=\"checkbox\" name=\"color\" value=\"Orange\"/>")
+        .append(" Orange<br/>\r\n")
+        .append("<input type=\"checkbox\" name=\"color\" value=\"Red\"/>")
+        .append(" Red<br/>\r\n")
+        .append("<input type=\"checkbox\" name=\"color\" value=\"Blue\"/>")
+        .append(" Blue<br/>\r\n")
+        .append("<input type=\"submit\" value=\"Submit\"/>\r\n")
+        .append("        </form>")
+        .append("    </body>\r\n")
+        .append("</html>\r\n");
+	 
+
  
 
 Check in the end git branch of this slide show 
-#### [JEE 8 Hello World Servlet Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-servlet-finish)
+##### [JEE 8 Hello World Servlet Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-servlet-finish)
 
     
 
