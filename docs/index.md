@@ -6,3 +6,9 @@ An introduction to Java Web Development with JEE 8:
 
 2. [Expand the Web App to include a Hello World Servlet](jee8servlet.md)
 
+3. [Debugging the JEE 8 Web App](jee8debug.md)
+
+4. [Using HTML input forms in the JEE 8 Web App](jee8forms.md)
+
+
+
