@@ -107,9 +107,6 @@ We will make use of logging here for better understanding
         .append("    </body>\r\n")
         .append("</html>\r\n");
 	 
-
- 
-
 Check in the end git branch of this slide show 
 ##### [JEE 8 Hello World Servlet Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-servlet-finish)
 
