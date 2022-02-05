@@ -1,22 +1,16 @@
-## Using init parameters to configure the JEE 8 Web Hello World App Module
+## Using Forms and parameters in the JEE 8 Web Hello World Servlet module
 
-##### [JEE 8 Init Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-init-param-start)
+##### [JEE 8 Web Forms Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-debug-start)
 
-### 1. Using Context Init Parameters
+### 1. Update the HelloWorldServlet to use annotations and present the user with an input form
 
-###### Useful for setting up DB Connections, Cloud Configs etc.
+###### Use the @WebServlet annotation to decorate the HelloWorldServlet
 
-	You declare context init parameters in the web.xml deployment descriptor file
-	
-	<context-param>
-        <param-name>databaseOne</param-name>
-        <param-value>sql-server</param-value>
-    </context-param>
-    <context-param>
-        <param-name>cloudOne</param-name>
-        <param-value>google-cloud-platform</param-value>
-    </context-param>
-    
+	@WebServlet(
+        name = "helloServlet",
+        urlPatterns = {"/greeting", "/salutation", "/wazzup"},
+        loadOnStartup = 1
+	)
 
 ###### Expand the HelloWorldServlet to present the User with an input form
 
