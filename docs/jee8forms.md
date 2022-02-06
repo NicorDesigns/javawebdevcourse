@@ -1,94 +1,114 @@
-## Using init parameters to configure the JEE 8 Web Hello World App Module
+## Using Forms and parameters in the JEE 8 Web Hello World Servlet module
 
-##### [JEE 8 Init Param Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-init-param-start)
+##### [JEE 8 Web Forms Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-debug-start)
 
-### 1. Using Context Init Parameters
+### 1. Update the HelloWorldServlet to use annotations and present the user with an input form
 
-###### Useful for setting up DB Connections, Cloud Configs etc.
+###### Use the @WebServlet annotation to decorate the HelloWorldServlet
 
-###### You declare context init parameters in the web.xml deployment descriptor file
-	
-	<context-param>
-        <param-name>databaseOne</param-name>
-        <param-value>sql-server</param-value>
-    </context-param>
-    <context-param>
-        <param-name>cloudOne</param-name>
-        <param-value>google-cloud-platform</param-value>
-    </context-param>
-    
+	@WebServlet(
+        name = "helloServlet",
+        urlPatterns = {"/greeting", "/salutation", "/wazzup"},
+        loadOnStartup = 1
+	)
 
-###### You can read in these parameters from within your servlet 
+###### Expand the HelloWorldServlet to present the User with an input form
 
-```
-@WebServlet(
-name = "contextParameterServlet",
-urlPatterns = {"/contextParameters"}
-)
-public class ContextParameterServlet extends HttpServlet
-{
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
-        ServletContext c = this.getServletContext();
+	String user = request.getParameter("user");
+        if(user == null)
+            user = HelloServlet.DEFAULT_USER;
+
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+
         PrintWriter writer = response.getWriter();
-
-        writer.append("databaseOne: ").append(c.getInitParameter("databaseOne"))
-              .append(", cloudOne: ").append(c.getInitParameter("cloudOne"));
-    }
-}
-
-```
-			
-##### Run the Web App - navigate to the Servlet URL to see the parameters output to the screen 
-###### These parameters are globally accessible in your web app from the point of startup 
- 
-
-
-### 2. Using Servlet Init Parameters
-##### Because only one servlet requires the setup
-###### You declare servlet init parameters in the web.xml deployment descriptor file:
-
-
-	<servlet>
-        <servlet-name>servletParameterServlet</servlet-name>
-        <servlet-class>com.nicordesigns.ServletParameterServlet</servlet-class>
-        <init-param>
-            <param-name>database</param-name>
-            <param-value>CharityAssociates</param-value>
-        </init-param>
-        <init-param>
-            <param-name>server</param-name>
-            <param-value>10.0.12.5</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>servletParameterServlet</servlet-name>
-        <url-pattern>/servletParameters</url-pattern>
-    </servlet-mapping>
-    
-##### Here you obtain the parameters from the ServletConfig object.
-
-
-	public class ServletParameterServlet extends HttpServlet
-	{
-	    @Override
-	    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-	            throws ServletException, IOException
-	    {
-	        ServletConfig c = this.getServletConfig();
-	        PrintWriter writer = response.getWriter();
+        writer.append("<!DOCTYPE html>\r\n")
+              .append("<html>\r\n")
+              .append("    <head>\r\n")
+              .append("        <title>Hello User Application</title>\r\n")
+              .append("    </head>\r\n")
+              .append("    <body>\r\n")
+              .append("        Hello, ").append(user).append("!<br/><br/>\r\n")
+              .append("        <form action=\"greeting\" method=\"POST\">\r\n")
+              .append("            Enter your name:<br/>\r\n")
+              .append("            <input type=\"text\" name=\"user\"/><br/>\r\n")
+              .append("            <input type=\"submit\" value=\"Submit\"/>\r\n")
+              .append("        </form>\r\n")
+              .append("    </body>\r\n")
+              .append("</html>\r\n");
 	
-	        writer.append("database: ").append(c.getInitParameter("database"))
-	              .append(", server: ").append(c.getInitParameter("server"));
-	    }
-	}	
-    
-    
+### 2. Remove or comment out the Servlet config code in web.xml and update the index.jsp landing page code
+
+	<!-- 	<servlet> -->
+	<!-- 		<servlet-name>helloServlet</servlet-name> -->
+	<!-- 		<servlet-class>com.nicordesigns.HelloWorldServlet</servlet-class> -->
+	<!-- 	</servlet> -->
+	
+	<!-- 	<servlet-mapping> -->
+	<!-- 		<servlet-name>helloServlet</servlet-name> -->
+	<!-- 		<url-pattern>/hello-world</url-pattern> -->
+	<!-- 	</servlet-mapping> -->
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
+	
+	<html>
+	<head>
+	    <title>Hello, World Application Index File</title>
+	  </head>
+	<body>
+	<h2>Hello World!</h2>
+	<a href="hello-world">Present the Hello World Input Form...</a>.
+	Java runtime version: <%= System.getProperty("java.version") %>
+	</body>
+	</html>
+	
+	
+
+##### Run the Web App
+
+##### Demonstrate that both the doGet() and doPost() method will accept and display the name parameter by using URL and Form
+
+We will make use of logging here for better understanding 
+
+### 4. Now add the Multi-Part Form Servlet
+
+
+	response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+
+        PrintWriter writer = response.getWriter();
+        writer.append("<!DOCTYPE html>\r\n")
+        .append("<html>\r\n")
+        .append("    <head>\r\n")
+        .append("        <title>Hello World Application</title>\r\n")
+        .append("    </head>\r\n")
+        .append("    <body>\r\n")
+        .append("        <form action=\"checkboxes\" method=\"POST\">\r\n")
+        .append("Select the colors you like:<br/>\r\n")
+        .append("<input type=\"checkbox\" name=\"color\" value=\"Yellow\"/>")
+        .append(" Yellow<br/>\r\n")
+        .append("<input type=\"checkbox\" name=\"color\" value=\"Black\"/>")
+        .append(" Black<br/>\r\n")
+        .append("<input type=\"checkbox\" name=\"color\" value=\"Orange\"/>")
+        .append(" Orange<br/>\r\n")
+        .append("<input type=\"checkbox\" name=\"color\" value=\"Red\"/>")
+        .append(" Red<br/>\r\n")
+        .append("<input type=\"checkbox\" name=\"color\" value=\"Blue\"/>")
+        .append(" Blue<br/>\r\n")
+        .append("<input type=\"submit\" value=\"Submit\"/>\r\n")
+        .append("        </form>")
+        .append("    </body>\r\n")
+        .append("</html>\r\n");
 	 
 Check in the end git branch of this slide show 
-##### [JEE 8 Init Param Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-init-param-finish)
+##### [JEE 8 Hello World Servlet Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-servlet-finish)
 
     
 

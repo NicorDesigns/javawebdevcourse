@@ -10,5 +10,5 @@ An introduction to Java Web Development with JEE 8:
 
 4. [Using HTML input forms in the JEE 8 Web App](jee8forms.md)
 
-
+5. [Using Init Params in the JEE 8 Web App](jee8initparams.md)
 
