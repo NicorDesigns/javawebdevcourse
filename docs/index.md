@@ -12,3 +12,6 @@ An introduction to Java Web Development with JEE 8:
 
 5. [Using Init Params in the JEE 8 Web App](jee8initparams.md)
 
+6. [Uploading files via Servlet in the JEE 8 Web App](jee8fileupload.md)
+
+

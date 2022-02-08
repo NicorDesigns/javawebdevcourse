@@ -8,5 +8,6 @@
   <name>javawebdev</name>
   <modules>
     <module>jee8webarchetype</module>
+    <module>charity-registration</module>
   </modules>
 </project>
