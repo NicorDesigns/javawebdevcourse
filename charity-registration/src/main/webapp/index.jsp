@@ -4,6 +4,6 @@
     <title>Customer Support Application Index File</title>
   </head>
   <body>
-      <a href="tickets">Go to tickets</a>.
+      <a href="registrations">Go to registrations</a>.
   </body>
 </html>
