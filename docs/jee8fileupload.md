@@ -169,6 +169,9 @@ We specify that a file has to be downloaded, we use binary stream to write the f
         response.sendRedirect("registrations?action=view&registrationId=" + id);
     }
 
+This method gets the InputStream from the request and copies it to the Attachment object and assigns
+it a name 
+ 
     private Attachment processAttachment(Part filePart)
             throws IOException
     {
