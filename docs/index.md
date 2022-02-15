@@ -16,4 +16,5 @@ An introduction to Java Web Development with JEE 8:
 
 7. [Multithreading in the JEE 8 Web App](jee8multithreading.md)
 
+8. [JSP is HTML in the JEE 8 Web App](jee8jspishtml.md)
 
