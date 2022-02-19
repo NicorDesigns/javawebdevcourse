@@ -38,7 +38,7 @@ public class HelloWorldServlet extends HttpServlet {
 	        writer.append("<!DOCTYPE html>\r\n")
 	              .append("<html>\r\n")
 	              .append("    <head>\r\n")
-	              .append("        <title>Hello User Application</title>\r\n")
+	              .append("        <title>Hello Associate Application</title>\r\n")
 	              .append("    </head>\r\n")
 	              .append("    <body>\r\n")
 	              .append("        Hello, ").append(user).append("!<br/><br/>\r\n")
