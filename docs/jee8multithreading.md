@@ -39,14 +39,10 @@ Using volatile and synchronized code blocks only allows one thread access and up
         this.registrationDatabase.put(id, registration);
     }
         
-        
-	
-	
-
-
+    
 	
 Check in the end git branch of this slide show 
-##### [JEE 8 Multi-threading Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-file-upload-finish)
+##### [JEE 8 Multi-threading Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-multithreading-end)
 
     
 
