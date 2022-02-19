@@ -5,7 +5,7 @@ Use these (but for JEE8) to update these code examples:
 https://www.baeldung.com/jsp#overview
 
 
-##### [JEE 8 JSP is HTMl Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-file-upload-start)
+##### [JEE 8 JSP is HTMl Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-jsp-is-html-start)
 
 ### 1. Consider the following section of Print writer code 
 
@@ -125,7 +125,7 @@ Compare and inspect the _jspService method
 
 Check in the end git branch of this slide show 
 
-##### [JEE 8 JSP is HTML Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-file-upload-finish)
+##### [JEE 8 JSP is HTML Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-jsp-is-html-end)
 
     
 
