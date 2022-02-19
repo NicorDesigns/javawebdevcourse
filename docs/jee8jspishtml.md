@@ -1,4 +1,4 @@
-## Demonstrating that JSP is HTML in a JEE 8 Web App Module
+### Demonstrating that JSP is HTML in a JEE 8 Web App Module
 
 Use these (but for JEE8) to update these code examples:
 
@@ -7,7 +7,7 @@ https://www.baeldung.com/jsp#overview
 
 ##### [JEE 8 JSP is HTMl Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-jsp-is-html-start)
 
-### 1. Consider the following section of Print writer code 
+#### 1. Consider the following section of Print writer code 
 
 		 PrintWriter writer = response.getWriter();
         writer.append("<!DOCTYPE html>\r\n")
@@ -28,7 +28,7 @@ https://www.baeldung.com/jsp#overview
         
 This is an extremely tedious and error prone way to output an HTML form, it would be much easier to present this form as a JSP
 
-### 2. Enter the JSP
+#### 2. Enter the JSP
 
 
 		<%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -57,13 +57,13 @@ This is an extremely tedious and error prone way to output an HTML form, it woul
 
 		 
  
-### 3. JSP's are a combo of Java Code and HTML that are easier to maintain and comes with pre-built tags, JSTL and Expression Language EL, we can also create our own custom tags         
+#### 3. JSP's are a combo of Java Code and HTML that are easier to maintain and comes with pre-built tags, JSTL and Expression Language EL, we can also create our own custom tags         
         
 
-### 4. We will now replace the writer.out() code in our JEE8 Web Archetype Example with JSP's and through debugging and logging we will learn about the lifecycle of a JSP
+#### 4. We will now replace the writer.out() code in our JEE8 Web Archetype Example with JSP's and through debugging and logging we will learn about the lifecycle of a JSP
 
 
-### 5. At this point we switch to code in Eclipse and start with updating the Maven Dependencies so that
+#### 5. At this point we switch to code in Eclipse and start with updating the Maven Dependencies so that
 we can make use of JSP's
 
 ##### Add Maven Dependencies (exclude transitive dependencies)
@@ -103,9 +103,9 @@ we can make use of JSP's
 			</exclusions>
 		</dependency>
 
-#### Then we create a new greeting.jsp (above) page that will emulate the HelloWorld Servlet and test it
+##### Then we create a new greeting.jsp (above) page that will emulate the HelloWorld Servlet and test it
 
-#### We will learn that JSP's are compiled back into servlets under the covers
+##### We will learn that JSP's are compiled back into servlets under the covers
 In Eclipse we can find the location below the file path of our current workspace
 The Deploy directory
 C:\Users\nicok\Dropbox\JavaWebDevUdemu\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps
@@ -121,7 +121,7 @@ Compare and inspect the _jspService method
  *       generation to assist with modification tracking.
  */
 
-### 6. We demonstrate that we can debug the greeting.jsp in Eclipse (and learn about pre-compile deployment)
+#### 6. We demonstrate that we can debug the greeting.jsp in Eclipse (and learn about pre-compile deployment)
 
 Check in the end git branch of this slide show 
 
