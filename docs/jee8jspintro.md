@@ -93,7 +93,43 @@ and look at the *example.java file for a better understanding
 	
 	isThreadSafe  		<!--Default is true, specifies that the JSP can handle multiple requests-->	
 	
+
+#### 5. Including other JSPs
+
+	<%@ include file="/relative/file/path/index.jsp" %>
 	
+Include directive as above with relative file path to jsp directory the translated include JSP gets folded into the JSP
+
+To demonstrate
+
+1. Create demo includer.jsp in web root
+2. Compile and debug the app 
+3. Navigate to the translated JSP in the Eclipse workspace (this will demonstrate that it is the same as index.jsp)
+
+
+##### JSP's can also be included dynamically at run time
+
+	<jsp:include page="/relative/file/path/index.jsp" >
+	
+Here the included JSP is compiled separately and at run time the request is forwarded to the dymanically
+included JSP
+
+To demonstrate
+
+1. Create dynamicIncluder.jsp in web root
+2. Compile and debug
+3. Navigate to the translated JSP and investigate the line of code that demonstrates this
+
+As a self exercise think about the pro's an cons of each case
+(Here I can incorporate an online quiz)
+
+
+#### 6. Including Tag Libraries
+
+	<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+	
+As in user.jsp here uri specifies the the URI namespace of the the tag library and the prefix is an 
+alias you use to refer to the tags in the JSP 
 
 
 Check in the end git branch of this slide show 
