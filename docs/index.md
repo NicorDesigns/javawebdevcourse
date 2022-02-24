@@ -18,3 +18,6 @@ An introduction to Java Web Development with JEE 8:
 
 8. [JSP is HTML in the JEE 8 Web App](jee8jspishtml.md)
 
+9. [JSP extended introduction with the JEE 8 Web App](jee8jspintro.md)
+
+10. [Embedding Java into JSP with JEE 8 Web App](jee8embeddedjava.md)
