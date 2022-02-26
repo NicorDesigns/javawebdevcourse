@@ -2,13 +2,16 @@
 
 Use these (but for JEE8) to update these code examples:
 
-https://docs.oracle.com/javaee/5/tutorial/doc/bnahl.html#bnahn
+https://jakarta.ee/specifications/pages/3.0/jakarta-server-pages-spec-3.0.html#implicit-objects
+
 
 We will explore how to use Java within JSP and find out why it is actually a bad idea
 
 ##### [Embedding Java within JSP Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-embedded-java-start)
 
 #### 1. Using the Implicit variables in JSP 
+
+[Implicit Objects](https://jakarta.ee/specifications/pages/3.0/jakarta-server-pages-spec-3.0.html#implicit-objects)
 
 These variables are part of the JSP specification and their scope are limited to the JSP Service method,
 which means the are not accessible within JSP declarations which have class scope
