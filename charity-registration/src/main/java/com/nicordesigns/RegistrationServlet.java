@@ -43,7 +43,7 @@ public class RegistrationServlet extends HttpServlet
         switch(action)
         {
             case "create":
-                this.showRegistrationForm(response);
+                this.showRegistrationForm(request, response);
                 break;
             case "view":
                 this.viewRegistration(request, response);
@@ -77,29 +77,12 @@ public class RegistrationServlet extends HttpServlet
         }
     }
 
-    private void showRegistrationForm(HttpServletResponse response)
+    private void showRegistrationForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        PrintWriter writer = this.writeHeader(response);
-
-        writer.append("<h2>Create a Registration</h2>\r\n");
-        writer.append("<form method=\"POST\" action=\"registrations\" ")
-              .append("enctype=\"multipart/form-data\">\r\n");
-        writer.append("<input type=\"hidden\" name=\"action\" ")
-              .append("value=\"create\"/>\r\n");
-        writer.append("Your Name<br/>\r\n");
-        writer.append("<input type=\"text\" name=\"customerName\"/><br/><br/>\r\n");
-        writer.append("Subject<br/>\r\n");
-        writer.append("<input type=\"text\" name=\"subject\"/><br/><br/>\r\n");
-        writer.append("Body<br/>\r\n");
-        writer.append("<textarea name=\"body\" rows=\"5\" cols=\"30\">")
-              .append("</textarea><br/><br/>\r\n");
-        writer.append("<b>Attachments</b><br/>\r\n");
-        writer.append("<input type=\"file\" name=\"file1\"/><br/><br/>\r\n");
-        writer.append("<input type=\"submit\" value=\"Submit\"/>\r\n");
-        writer.append("</form>\r\n");
-
-        this.writeFooter(writer);
+    	
+    	 request.getRequestDispatcher("/WEB-INF/jsp/view/registrationForm.jsp")
+         .forward(request, response);
     }
 
     private void viewRegistration(HttpServletRequest request,
@@ -111,33 +94,12 @@ public class RegistrationServlet extends HttpServlet
         if(registration == null)
             return;
 
-        PrintWriter writer = this.writeHeader(response);
+        request.setAttribute("RegistrationId", idString);
+        request.setAttribute("Registration", registration);
 
-        writer.append("<h2>Registration #").append(idString)
-              .append(": ").append(registration.getSubject()).append("</h2>\r\n");
-        writer.append("<i>Customer Name - ").append(registration.getCustomerName())
-              .append("</i><br/><br/>\r\n");
-        writer.append(registration.getBody()).append("<br/><br/>\r\n");
+        request.getRequestDispatcher("/WEB-INF/jsp/view/viewRegistration.jsp")
+               .forward(request, response);
 
-        if(registration.getNumberOfAttachments() > 0)
-        {
-            writer.append("Attachments: ");
-            int i = 0;
-            for(Attachment attachment : registration.getAttachments())
-            {
-                if(i++ > 0)
-                    writer.append(", ");
-                writer.append("<a href=\"registrations?action=download&registrationId=")
-                      .append(idString).append("&attachment=")
-                      .append(attachment.getName()).append("\">")
-                      .append(attachment.getName()).append("</a>");
-            }
-            writer.append("<br/><br/>\r\n");
-        }
-
-        writer.append("<a href=\"registrations\">Return to list registrations</a>\r\n");
-
-        this.writeFooter(writer);
     }
 
     private void downloadAttachment(HttpServletRequest request,

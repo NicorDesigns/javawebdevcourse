@@ -36,10 +36,8 @@ Instead of defining the properties at the top of the JSP, we define them in the 
 because of this multiple property groups there are complicated rules of precedence that you will have
 to follow, therefore it is much easer to stick to the "Keep it Simple Stupid" - KISS principle 
 
-[Setting Properties for Groups of JSP Pages](https://docs.oracle.com/javaee/5/tutorial/doc/bnajg.html)   
- 		
-	 
-#### 2. Using JSP properties
+[Setting Properties for Groups of JSP Pages](https://docs.oracle.com/javaee/5/tutorial/doc/bnajg.html)
+
 
 This tag is used to include the base.jspf at the beginning of each JSP file 
 
@@ -66,65 +64,61 @@ allows Embedded Java in any JSP.
 
 The above property tags has to appear in the order and only <url-pattern> are non optional
 
+We placed the base.jspf in the WEB-INF directory to prevent access from the web
+   
+      		<%@ page import="com.nicordesigns.Registration, com.nicordesigns.Attachment" %>
+			<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+The index.jsp file has been updated as follows:
+
+			<%@ page session="false" %>
+			<c:redirect url="/registrations" /> 		
+			
+			
+	 
+#### 2. Forwarding a request from a Servlet to a JSP
+
+In the Model View Controller Pattern used by combining Servlets and JSP's , the servlet acts as the
+Controller that does the business logic and updates the database Model and the JSP acts as the
+View Presentation that interacts with the Controller Servlet
  
-#### 3. Checkbox Form - checkboxes.jsp 
+#### 3. Using the Request Dispatcher 
 
     
-	<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+	private void showRegistrationForm(HttpServletRequest request, HttpServletResponse 	response)
+            throws ServletException, IOException
+    {
+    	
+    	 request.getRequestDispatcher("/WEB-INF/jsp/view/registrationForm.jsp")
+         .forward(request, response);
+    }
+    
+now forwards to the following JSP internally without using browser http redirect to
+
+	<%@ page session="false" %>
 	<!DOCTYPE html>
 	<html>
 	    <head>
-	        <title>Hello World Application</title>
+	        <title>Customer Support</title>
 	    </head>
 	    <body>
-	        <form action="checkboxesSubmit.jsp" method="POST">
-	            Select the colors you like:<br />
-	            <input type="checkbox" name="color" value="Yellow" /> Yellow<br />
-	            <input type="checkbox" name="color" value="Black" /> Black<br />
-	            <input type="checkbox" name="color" value="Orange" /> Orange<br />
-	            <input type="checkbox" name="color" value="Red" /> Red<br />
-	            <input type="checkbox" name="color" value="Blue" /> Blue<br />
-	            <input type="submit" value="Submit" />
+	        <h2>Create a Registration</h2>
+	        <form method="POST" action="registrations" enctype="multipart/form-data">
+	            <input type="hidden" name="action" value="create"/>
+	            Your Name<br/>
+	            <input type="text" name="customerName"><br/><br/>
+	            Subject<br/>
+	            <input type="text" name="subject"><br/><br/>
+	            Body<br/>
+	            <textarea name="body" rows="5" cols="30"></textarea><br/><br/>
+	            <b>Attachments</b><br/>
+	            <input type="file" name="file1"/><br/><br/>
+	            <input type="submit" value="Submit"/>
 	        </form>
 	    </body>
-	</html>      
-
-replicates the doGet() of the MultiValueParameterServlet
-checkboxesSubmit.jsp replicates the doPost method of the MultiValueParameterServlet
-
-	<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-	<%
-		String[] colors = request.getParameterValues("color");
-	%>
-	<!DOCTYPE html>
-	<html>
-	    <head>
-	        <title>Hello World Application</title>
-	    </head>
-	    <body>
-	        <h2>Your Selections</h2>
-	        <%
-	            if(colors == null)
-	            {
-	        %>You did not select any colors.<%
-	            }
-	            else
-	            {
-	        %><ul><%
-	                for(String color : colors)
-	                {
-	                    out.println("<li>" + color + "</li>");
-	                }
-	        %></ul><%
-	            }
-	        %>
-	    </body>
 	</html>
-
-We will debug and step through this JSP logic with the help of Eclipse.
-We will use the input form and the query string
-
-#### 4. We look at the implicit application variable with the contextParameters.jsp
+	          
+#### 4. Designing for the View Layer
 
 
 	<%@ page contentType="text/html;charset=UTF-8" language="java" %>
