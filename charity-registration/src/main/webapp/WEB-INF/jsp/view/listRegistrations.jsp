@@ -11,7 +11,7 @@
     </head>
     <body>
         <h2>Registrations</h2>
-        <a href="<c:url value="/Registrations">
+        <a href="<c:url value="/registrations">
             <c:param name="action" value="create" />
         </c:url>">Create Registration</a><br /><br />
         <%
@@ -25,9 +25,9 @@
                 {
                     String idString = Integer.toString(id);
                     Registration registration = registrationDatabase.get(id);
-                    %>Registration #<%= idString %>: <a href="<c:url value="/Registrations">
+                    %>Registration #<%= idString %>: <a href="<c:url value="/registrations">
                         <c:param name="action" value="view" />
-                        <c:param name="RegistrationId" value="<%= idString %>" />
+                        <c:param name="registrationId" value="<%= idString %>" />
                     </c:url>"><%= registration.getSubject() %></a> (customer:
         			<%= registration.getCustomerName() %>)<br /><%
                 }

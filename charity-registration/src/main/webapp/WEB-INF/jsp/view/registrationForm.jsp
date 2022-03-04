@@ -15,7 +15,7 @@
             Body<br/>
             <textarea name="body" rows="5" cols="30"></textarea><br/><br/>
             <b>Attachments</b><br/>
-            <input type="file" name="file1"/><br/><br/>
+            <input type="file" name="file"/><br/><br/>
             <input type="submit" value="Submit"/>
         </form>
     </body>

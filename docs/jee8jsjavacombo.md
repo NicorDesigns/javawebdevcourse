@@ -74,7 +74,8 @@ The index.jsp file has been updated as follows:
 			<%@ page session="false" %>
 			<c:redirect url="/registrations" /> 		
 			
-			
+session is false presents the JSESSIONID parameter from being appended to the redirect url to the
+registrations servlet in the second line			
 	 
 #### 2. Forwarding a request from a Servlet to a JSP
 
@@ -84,16 +85,19 @@ View Presentation that interacts with the Controller Servlet
  
 #### 3. Using the Request Dispatcher 
 
+Next we will change the RegistrationServlets viewRegistration method but first we will update our
+presentation layer which is the viewRegistration.jsp 
     
-	private void showRegistrationForm(HttpServletRequest request, HttpServletResponse 	response)
+	private void showRegistrationForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
     	
+    	 //Never use response object after a 'forward'
     	 request.getRequestDispatcher("/WEB-INF/jsp/view/registrationForm.jsp")
          .forward(request, response);
     }
     
-now forwards to the following JSP internally without using browser http redirect to
+now forwards to the following registrationForm JSP internally without using browser http redirect
 
 	<%@ page session="false" %>
 	<!DOCTYPE html>
@@ -120,50 +124,114 @@ now forwards to the following JSP internally without using browser http redirect
 	          
 #### 4. Designing for the View Layer
 
+Next we look at the viewRegistration.jsp
 
-	<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-	<!DOCTYPE html>
-	<html>
-	    <head>
-	        <title>Hello User Application</title>
-	    </head>
-	    <body>
-	        settingOne: <%= application.getInitParameter("databaseOne") %>,
-	        settingTwo: <%= application.getInitParameter("cloudOne") %>
-	    </body>
+	<%@ page session="false" import="com.nicordesigns.Attachment, 			com.nicordesigns.Registration" %>
+		<%
+		    String registrationId = (String)request.getAttribute("RegistrationId");
+			    Registration registration =(Registration)request.getAttribute("Registration");
+				%>
+		<!DOCTYPE html>
+		<html>
+	<head>
+        <title>Customer Support</title>
+    </head>
+    <body>
+        <h2>Registration #<%= registrationId %>: <%= registration.getSubject() %></h2>
+        <i>Customer Name - <%= registration.getCustomerName() %></i><br /><br />
+        <%= registration.getBody() %><br /><br />
+        <%
+            if(registration.getNumberOfAttachments() > 0)
+            {
+                %>Attachments: <%
+                int i = 0;
+                for(Attachment a : registration.getAttachments())
+                {
+                    if(i++ > 0)
+                        out.print(", ");
+                    %><a href="<c:url value="/registrations">
+                        <c:param name="action" value="download" />
+                        <c:param name="RegistrationId" value="<%= registrationId %>" />
+                        <c:param name="attachment" value="<%= a.getName() %>" />
+                    </c:url>"><%= a.getName() %></a><%
+                }
+                %><br /><br /><%
+            }
+        %>
+        <a href="<c:url value="/registrations" />">Return to list Registrations</a>
+    </body>
 	</html>
+	
+we see that the presentation layer requires registrationId and registration which is why we update the
+viewRegistration method in the RegistrationServlet
 
-with the context init parameters
+	private void viewRegistration(HttpServletRequest request,
+                            HttpServletResponse response)
+            throws ServletException, IOException
+    {
+        String idString = request.getParameter("registrationId");
+        Registration registration = this.getRegistration(idString, response);
+        if(registration == null)
+            return;
 
+        request.setAttribute("RegistrationId", idString);
+        request.setAttribute("Registration", registration);
 
-	<context-param>
-        <param-name>databaseOne</param-name>
-        <param-value>sql-server</param-value>
-    </context-param>
-    <context-param>
-        <param-name>cloudOne</param-name>
-        <param-value>google-cloud-platform</param-value>
-    </context-param>
-    
-We will debug and step through this JSP logic with the help of Eclipse.
-We will use the input form and the query string
+        request.getRequestDispatcher("/WEB-INF/jsp/view/viewRegistration.jsp")
+               .forward(request, response);
 
+    }
 
-#### 4. The danger of using embedded JAVA in JSP
+finally we separate the view and presentation of the listRegistration.jsp
 
-This break the Model View Controller pattern of modern back-end Java Enterprise Applications,
-and locks you into a viscous cycle of catch up with every update, bug-fix and change request of your application
+	<%@ page session="false" import="java.util.Map, com.nicordesigns.Attachment, 		com.nicordesigns.Registration" %>
+		<%
+		    @SuppressWarnings("unchecked")
+		    Map<Integer, Registration> registrationDatabase =
+		            (Map<Integer, Registration>)request.getAttribute("registrationDatabase");
+		%>
+		<!DOCTYPE html>
+		<html>
+    <head>
+        <title>Customer Support</title>
+    </head>
+    <body>
+        <h2>Registrations</h2>
+        <a href="<c:url value="/Registrations">
+            <c:param name="action" value="create" />
+        </c:url>">Create Registration</a><br /><br />
+        <%
+            if(registrationDatabase.size() == 0)
+            {
+                %><i>There are no Registrations in the system.</i><%
+            }
+            else
+            {
+                for(int id : registrationDatabase.keySet())
+                {
+                    String idString = Integer.toString(id);
+                    Registration registration = registrationDatabase.get(id);
+                    %>Registration #<%= idString %>: <a href="<c:url value="/Registrations">
+                        <c:param name="action" value="view" />
+                        <c:param name="RegistrationId" value="<%= idString %>" />
+                    </c:url>"><%= registration.getSubject() %></a> (customer:
+        			<%= registration.getCustomerName() %>)<br /><%
+                }
+            }
+        %>
+    </body>
+	</html>
+		 
+and we update the listRegistrations method in the RegistrationServlet.java
 
-This is also the reason that JSP's has been superseded by Java Server Faces in the latest JEE 8
-specification on the web client tier.
+		private void listRegistrations(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setAttribute("registrationDatabase", this.registrationDatabase);
 
-There also seems to be a new flavor of the month JavaScript Framework ever so often that are used
-on the web tier now that the web tier is now longer just browsers but also smart-phones and the Internet
-of things
+		request.getRequestDispatcher("/WEB-INF/jsp/view/listRegistrations.jsp").forward(request, 		response);
+	}
 
-
-
-
+#### 5. Now we will run and debug the application
 
 
 Check in the end git branch of this slide show 
