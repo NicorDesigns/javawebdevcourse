@@ -236,7 +236,7 @@ and we update the listRegistrations method in the RegistrationServlet.java
 
 Check in the end git branch of this slide show 
 
-##### [Embedding Java within JSP Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-servlets-jsp-combo-finish)
+##### [Java combined with JSP Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-servlets-jsp-combo-finish)
 
     
 
