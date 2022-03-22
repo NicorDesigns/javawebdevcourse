@@ -24,3 +24,6 @@ An introduction to Java Web Development with JEE 8:
 
 11. [Combining Java and JSP in our JEE 8 Web App](jee8jsjavacombo.md)
 
+12. [Maintaining State Using Sessions in our JEE 8 Web App Module](jee8sessions.md)
+
+

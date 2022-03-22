@@ -2,7 +2,7 @@
 
 Use these (but for JEE8) to update these code examples:
 
-https://jakarta.ee/specifications/servlet/5.0/jakarta-servlet-spec-5.0.html#sessions
+[Jakarta Servlet Specification - Sessions](https://jakarta.ee/specifications/servlet/5.0/jakarta-servlet-spec-5.0.html#sessions)
 
 We will now return to our charity registration example and start to introduce State and Session Management
 
@@ -16,9 +16,9 @@ We will now return to our charity registration example and start to introduce St
 
 #### 4. A login user/password form usually authenticates a User and allows us to associate the users database profile
 
-#### 5. We also associate specific workflows with Users - registering Charities etc
+#### 5. We also associate specific work-flows with Users - registering Charities etc
 
-Check in the end git branch of this slide show 
+Check in the end Git branch of this slide show 
 
 ##### [Maintaining State Using Sessions Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-session-management-start)
 
