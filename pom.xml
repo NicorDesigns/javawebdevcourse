@@ -9,5 +9,6 @@
   <modules>
     <module>jee8webarchetype</module>
     <module>charity-registration</module>
+    <module>charity-session</module>
   </modules>
 </project>
