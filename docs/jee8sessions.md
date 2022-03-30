@@ -19,7 +19,10 @@ We will now return to our charity registration example and start to introduce St
 #### 2. Working with cookies and URL parameters (Slide 3) 
 
 ###### A session is a data object maintained by the server or web application (user name etc)
-###### For the users browser to be able to "track" the server generates a SessionID string that gets send back to the browser on every request (Add PlantUML diagram here)
+###### For the users browser to be able to "track" the server generates a SessionID string that gets send back to the browser on every request 
+
+#(Add PlantUML diagram here)
+
 ###### HTTPSessions are a way to remember Users for example your Reddit User Name
 ###### HTTPSessions are a way to manage Workflow as in our example of Registering a Charity in an Online DB
 
@@ -35,17 +38,18 @@ disabled on the client user browser. The JEE8 platform includes the API tools to
 
 
 
-#### 3. How to store data in a session - this is where we start adding Session data to our charity-registration
-web application example
- 
-1. Ensure we have the <jsp-config> tag, the base.jspf file and the re-direct in our index.jsp landing page 
+#### 3. How to store data in a session 
 
-2. We configure our session in the web.xml as in the following example:  [Oracle Weblogic documentation](https://docs.oracle.com/cd/E24329_01/web.1211/e21049/web_xml.htm#WBAPP510)
+This is where we start adding Session data in our  charity-registration web application example
+ 
+##### 1. Ensure we have the <jsp-config> tag, the base.jspf file and the re-direct in our index.jsp landing page 
+
+##### 2. We configure our session in the web.xml as in the following example:  [Oracle Weblogic documentation](https://docs.oracle.com/cd/E24329_01/web.1211/e21049/web_xml.htm#WBAPP510)
 		
 		<session-config>
 		 <!-- Time before an inactive session is invalidated -->
         <session-timeout>30</session-timeout>
-        <!-- When using tracking-mode of cookie -->
+        <!-- When using tracking-mode of COOKIE -->
         <cookie-config>
             <!-- Custom name of the Session --> 
             <name>JSESSIONID</name>
@@ -62,26 +66,151 @@ web application example
         <tracking-mode>COOKIE</tracking-mode>
     	</session-config>
 
-here the tags are optional but the order is required, and also not all this can also be done programmatically as well.
-Our defined session configuration in the charity-registration app will be a watered down version of this example
+here the tags are optional but the order is required, and also not all this can also be done programmatically with
+the [ServletContext](https://javaee.github.io/javaee-spec/javadocs/javax/servlet/ServletContext.html) as well.
 
-3. Storing and Retrieving Data
+An example of setting session-timeout programmatically:
 
+		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(10*60);
+
+We will be using the charity-session module to demonstrate here
+
+	<session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
+
+##### 3. Storing and Retrieving Data
+
+CharitySessionServlet
+
+		@WebServlet(
+        name = "charitySessionServlet",
+        urlPatterns = "/charitySession"
+		)
+		public class CharitySessionServlet extends HttpServlet
+		{
+	 		private final Map<Integer, String> categories = new Hashtable<>();
+	
+	    public CharitySessionServlet()
+	    {
+	        this.categories.put(1, "Animals");
+	        this.categories.put(2, "Arts, Culture, Humanities");
+	        this.categories.put(3, "Community Development");
+	        this.categories.put(4, "Education");
+	        this.categories.put(5, "Environment");
+	        this.categories.put(6, "Health");
+	    }
+		
+##### 4. Using Sessions in the Charity Session Servlet
+
+
+	@Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
+    {
+        String action = request.getParameter("action");
+        if(action == null)
+            action = "browse";
+
+        switch(action)
+        {
+            case "addToCharitySession":
+                this.addToCharitySession(request, response);
+                break;
+
+            case "emptyCharitySessionObject":
+                this.emptyCharitySessionObject(request, response);
+                break;
+
+            case "viewCharitySession":
+                this.viewCharitySession(request, response);
+                break;
+
+            case "browse":
+            default:
+                this.browse(request, response);
+                break;
+        }
+    }
+		
+
+##### 4. Using Sessions in JSP
+
+browse.jsp
+
+		<%@ page import="java.util.Map" %>
+		<!DOCTYPE html>
+		<html>
+		    <head>
+		        <title>Charity Category List</title>
+		    </head>
+		    <body>
+		        <h2>Charity Category List</h2>
+		        <a href="<c:url value="/charitySession?action=viewCharitySession" />">
+		        View Charity Session Data Object</a><br /><br />
+		        <%
+		            @SuppressWarnings("unchecked")
+		            Map<Integer, String> categories =
+		                    (Map<Integer, String>)request.getAttribute("categories");
+		
+		            for(int id : categories.keySet())
+		            {
+		                %><a href="<c:url value="/charitySession">
+		                    <c:param name="action" value="addToCharitySession" />
+		                    <c:param name="categoryId" value="<%= Integer.toString(id) %>"/>
+		                </c:url>"><%= categories.get(id) %></a><br /><%
+		            }
+		        %>
+		    </body>
+		</html>
+		
+viewCharitySessionObject.jsp
+
+		
+	<%@ page import="java.util.Map" %>
+	<!DOCTYPE html>
+	<html>
+	    <head>
+	        <title>View Charity Session Object</title>
+	    </head>
+	    <body>
+	        <h2>View Charity Session Object</h2>
+	        <a href="<c:url value="/charitySession" />">Charity Category List</a><br /><br />
+	        <a href="<c:url value="/charitySession?action=emptyCharitySessionObject" />">
+	        Empty Charity Session Object</a><br /><br />
+	        <%
+	            @SuppressWarnings("unchecked")
+	            Map<Integer, String> categories =
+	                    (Map<Integer, String>)request.getAttribute("categories");
+	            @SuppressWarnings("unchecked")
+	            Map<Integer, Integer> categoryHolder =
+	                    (Map<Integer, Integer>)session.getAttribute("categoryHolder");
+	
+	            if(categoryHolder == null || categoryHolder.size() == 0)
+	                out.println("Your category holder is empty.");
+	            else
+	            {
+	                for(int id : categoryHolder.keySet())
+	                {
+	                    out.println(categories.get(id) + " (qty: " + categoryHolder.get(id) +
+	                            ")<br />");
+	                }
+	            }
+	        %>
+	    </body>
+	</html>
+		
+##### 5. Compiling, testing and debugging our charity-session web application
+
+We look at all the functionality provided by our app and we also look at what happens with the session 
+when you close the browser
      	
-
-#### 4. Making sessions useful
-#### 5. How to cluster an application that uses sessions 
-
-#### 1. We need a way to identify a unique user
-
-#### 2. HTTP is a stateless network protocol
-
-#### 3. HTTPSession is a way to maintain state between requests - shopping carts 
-
-#### 4. A login user/password form usually authenticates a User and allows us to associate the users database profile
-
-#### 5. We also associate specific work-flows with Users - registering Charities etc
-
 Check in the end Git branch of this slide show 
 
 ##### [Maintaining State Using Sessions Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-session-management-finish)
