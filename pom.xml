@@ -10,5 +10,6 @@
     <module>jee8webarchetype</module>
     <module>charity-registration</module>
     <module>charity-session</module>
+    <module>session-activity</module>
   </modules>
 </project>
