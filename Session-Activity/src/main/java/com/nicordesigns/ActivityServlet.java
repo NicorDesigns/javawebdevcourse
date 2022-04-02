@@ -12,8 +12,8 @@ import java.net.UnknownHostException;
 import java.util.Vector;
 
 @WebServlet(
-        name = "storeServlet",
-        urlPatterns = "/do/*"
+        name = "activityServlet",
+        urlPatterns = "/sessionactivity"
 )
 public class ActivityServlet extends HttpServlet
 {

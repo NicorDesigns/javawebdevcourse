@@ -1,1 +1,1 @@
-<c:redirect url="/do/home" />
+<c:redirect url="/sessionactivity" />
