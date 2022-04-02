@@ -12,17 +12,12 @@ import java.net.UnknownHostException;
 import java.util.Vector;
 
 @WebServlet(
-        name = "activityServlet",
-        urlPatterns = "/sessionactivity"
+        name = "storeServlet",
+        urlPatterns = "/do/*"
 )
 public class ActivityServlet extends HttpServlet
 {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
