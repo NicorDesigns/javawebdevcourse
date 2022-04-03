@@ -146,7 +146,7 @@ but implements a different re-direct
 	</html>
 	
 ##### 2. Compiling, testing and debugging our session-activity web application
-##### 
+##### Add different paths and query parameters to the URL replace /home but leave do
      	
 Check in the end Git branch of this slide show 
 
