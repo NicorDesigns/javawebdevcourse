@@ -4,11 +4,13 @@ Use these (but for JEE8) to update these code examples:
 
 [Jakarta Servlet Specification - Sessions](https://jakarta.ee/specifications/servlet/5.0/jakarta-servlet-spec-5.0.html#sessions)
 
-We will now continue with our charity registration example and start to introduce State and Session Management
+We will now add a Session Activity Example in order to learn more about Session Management. It has the same index.jsp and base.jspf file as our previous example
+but implements a different re-direct
 
 ##### [More Maintaining State Using Sessions Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-more-session-management-start)
 
 #### 1. Storing more Complex data in Session (Slide 1)
+##### You can store any class object in the Session however to satisfy requirements for clustering your we servers and deploying to cloud platforms the class needs to implement Serializable 
 
 ###### We use the PageVisit Class to store our session
 
@@ -28,7 +30,7 @@ We will now continue with our charity registration example and start to introduc
 
 	@WebServlet(
         name = "storeServlet",
-        urlPatterns = "/do/*"
+        urlPatterns = "/do/*" //Answers to any request starting with /do/
 	)
 	public class ActivityServlet extends HttpServlet
 	{
@@ -44,11 +46,15 @@ We will now continue with our charity registration example and start to introduc
 	
 	    private void recordSessionActivity(HttpServletRequest request)
 	    {
+	        //Retrieve the session
 	        HttpSession session = request.getSession();
 	
+			 //Creates Activity Vector if it does not exist	
 	        if(session.getAttribute("activity") == null)
 	            session.setAttribute("activity", new Vector<PageVisit>());
 	        
+	        //Replace with https://www.baeldung.com/java-copy-on-write-arraylist
+	        //Updates the lefttimestamp of the last visit
 	        @SuppressWarnings("unchecked")
 	        Vector<PageVisit> visits =
 	                (Vector<PageVisit>)session.getAttribute("activity");
@@ -59,6 +65,7 @@ We will now continue with our charity registration example and start to introduc
 	            last.setLeftTimestamp(System.currentTimeMillis());
 	        }
 	
+	        //Adds more information to the current Vector
 	        PageVisit now = new PageVisit();
 	        now.setEnteredTimestamp(System.currentTimeMillis());
 	        if(request.getQueryString() == null)
@@ -80,6 +87,7 @@ We will now continue with our charity registration example and start to introduc
 	                                     HttpServletResponse response)
 	            throws ServletException, IOException
 	    {
+	    	 //forwards to a JSP	
 	        request.getRequestDispatcher("/WEB-INF/jsp/view/viewSessionActivity.jsp")
 	               .forward(request, response);
 	    }
@@ -137,6 +145,8 @@ We will now continue with our charity registration example and start to introduc
 	    </body>
 	</html>
 	
+##### 2. Compiling, testing and debugging our session-activity web application
+##### 
      	
 Check in the end Git branch of this slide show 
 

@@ -205,6 +205,17 @@ viewCharitySessionObject.jsp
 	        %>
 	    </body>
 	</html>
+	
+HttpSession.getId() retrieves the Session Id
+getCreationTime
+getLastAccessedTime- the last time the User Accessed the session
+isNew - true if the session was created during the current request
+getMaxInterval - max time that the session can be inactive
+setMaxInterval - set the time the session can be inactive <session-timeout>
+invalidate - removes the current session and its data
+
+
+	
 		
 ##### 5. Compiling, testing and debugging our charity-session web application
 
