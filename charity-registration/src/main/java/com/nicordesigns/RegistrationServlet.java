@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 @WebServlet(name = "registrationServlet", urlPatterns = { "/registrations" }, loadOnStartup = 1)
@@ -30,6 +31,16 @@ public class RegistrationServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//Check that the Users are logged in
+    	if(request.getSession().getAttribute("username") == null)
+        {
+            response.sendRedirect("login");
+            return;
+        } 
+    	
+    	
+    	
 		String action = request.getParameter("action");
 		if (action == null)
 			action = "list";
@@ -53,6 +64,15 @@ public class RegistrationServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//Check that the Users are logged in
+    	if(request.getSession().getAttribute("username") == null)
+        {
+            response.sendRedirect("login");
+            return;
+        } 
+    	
+		
 		String action = request.getParameter("action");
 		if (action == null)
 			action = "list";
@@ -123,7 +143,8 @@ public class RegistrationServlet extends HttpServlet {
 	private void createRegistration(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Registration registration = new Registration();
-		registration.setCustomerName(request.getParameter("customerName"));
+		HttpSession session = request.getSession();
+		registration.setUserName((String) session.getAttribute("userName"));
 		registration.setSubject(request.getParameter("subject"));
 		registration.setBody(request.getParameter("body"));
 

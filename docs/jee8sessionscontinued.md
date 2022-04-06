@@ -147,6 +147,16 @@ but implements a different re-direct
 	
 ##### 2. Compiling, testing and debugging our session-activity web application
 ##### Add different paths and query parameters to the URL replace /home but leave do
+
+##### 3. Applying Sessions in our charity-registration module
+##### We add the <session-config> entry to our web.xml and and an in memory database to store Users and a login page and servlet
+
+
+
+
+
+
+
      	
 Check in the end Git branch of this slide show 
 

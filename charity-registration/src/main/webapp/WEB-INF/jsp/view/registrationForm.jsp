@@ -2,14 +2,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Customer Support</title>
+        <title>Charity Associate Support</title>
     </head>
     <body>
         <h2>Create a Registration</h2>
         <form method="POST" action="registrations" enctype="multipart/form-data">
             <input type="hidden" name="action" value="create"/>
-            Your Name<br/>
-            <input type="text" name="customerName"><br/><br/>
+            
             Subject<br/>
             <input type="text" name="subject"><br/><br/>
             Body<br/>

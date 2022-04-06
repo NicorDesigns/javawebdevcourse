@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Customer Support</title>
+        <title>Charity Associate Support</title>
     </head>
     <body>
         <h2>Registrations</h2>
@@ -29,7 +29,7 @@
                         <c:param name="action" value="view" />
                         <c:param name="registrationId" value="<%= idString %>" />
                     </c:url>"><%= registration.getSubject() %></a> (customer:
-        			<%= registration.getCustomerName() %>)<br /><%
+        			<%= registration.getUserName() %>)<br /><%
                 }
             }
         %>

@@ -6,11 +6,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Customer Support</title>
+        <title>Charity Associate Support</title>
     </head>
     <body>
-        <h2>Registration #<%= registrationId %>: <%= registration.getCustomerName() %></h2>
-        <i>Customer Name - <%= registration.getCustomerName() %></i><br /><br />
+        <!-- Fix the fact that these values are null -->
+        <h2>Registration #<%= registrationId %>: <%= registration.getUserName() %></h2>
+        <i>User Name - <%= registration.getUserName() %></i><br /><br />
         <%= registration.getBody() %><br /><br />
         <%
             if(registration.getNumberOfAttachments() > 0)

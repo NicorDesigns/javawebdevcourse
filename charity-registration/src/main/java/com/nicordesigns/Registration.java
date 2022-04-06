@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Registration
 {
-    private String customerName;
+    private String username;
 
     private String subject;
 
@@ -14,14 +14,14 @@ public class Registration
 
     private Map<String, Attachment> attachments = new LinkedHashMap<>();
 
-    public String getCustomerName()
+    public String getUserName()
     {
-        return customerName;
+        return username;
     }
 
-    public void setCustomerName(String customerName)
+    public void setUserName(String username)
     {
-        this.customerName = customerName;
+        this.username = username;
     }
 
     public String getSubject()
