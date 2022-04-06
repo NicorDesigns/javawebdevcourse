@@ -143,8 +143,10 @@ public class RegistrationServlet extends HttpServlet {
 	private void createRegistration(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Registration registration = new Registration();
+		
 		HttpSession session = request.getSession();
-		registration.setUserName((String) session.getAttribute("userName"));
+		registration.setUserName((String) session.getAttribute("username"));
+		
 		registration.setSubject(request.getParameter("subject"));
 		registration.setBody(request.getParameter("body"));
 

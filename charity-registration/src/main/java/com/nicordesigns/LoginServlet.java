@@ -45,6 +45,7 @@ public class LoginServlet extends HttpServlet
         else if(session.getAttribute("username") != null) 
         {
         	//Send to application if logged in
+        	session.setAttribute("username", session.getAttribute("username").toString());
             response.sendRedirect("registrations");
             return;
         }
@@ -85,8 +86,8 @@ public class LoginServlet extends HttpServlet
         }
         else
         {
-            session.setAttribute("username", username);
             request.changeSessionId();
+            session.setAttribute("username", username);
             response.sendRedirect("registrations");
         }
     }

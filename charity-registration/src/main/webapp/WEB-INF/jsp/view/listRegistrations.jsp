@@ -1,4 +1,4 @@
-<%@ page session="false" import="java.util.Map, com.nicordesigns.Attachment, com.nicordesigns.Registration" %>
+<%@ page import="java.util.Map, com.nicordesigns.Attachment, com.nicordesigns.Registration" %>
 <%
     @SuppressWarnings("unchecked")
     Map<Integer, Registration> registrationDatabase =
@@ -28,7 +28,7 @@
                     %>Registration #<%= idString %>: <a href="<c:url value="/registrations">
                         <c:param name="action" value="view" />
                         <c:param name="registrationId" value="<%= idString %>" />
-                    </c:url>"><%= registration.getSubject() %></a> (customer:
+                    </c:url>"><%= registration.getSubject() %></a> (User Name:
         			<%= registration.getUserName() %>)<br /><%
                 }
             }

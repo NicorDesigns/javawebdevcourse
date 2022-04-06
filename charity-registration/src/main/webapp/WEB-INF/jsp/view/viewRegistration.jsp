@@ -1,4 +1,4 @@
-<%@ page session="false" import="com.nicordesigns.Attachment, com.nicordesigns.Registration" %>
+<%@ page import="com.nicordesigns.Attachment, com.nicordesigns.Registration" %>
 <%
     String registrationId = (String)request.getAttribute("registrationId");
     Registration registration = (Registration)request.getAttribute("registration");
@@ -10,8 +10,7 @@
     </head>
     <body>
         <!-- Fix the fact that these values are null -->
-        <h2>Registration #<%= registrationId %>: <%= registration.getUserName() %></h2>
-        <i>User Name - <%= registration.getUserName() %></i><br /><br />
+        <%= registration.getUserName() %><br /><br />
         <%= registration.getBody() %><br /><br />
         <%
             if(registration.getNumberOfAttachments() > 0)
