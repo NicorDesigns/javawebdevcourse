@@ -9,6 +9,8 @@
         <title>Charity Associate Support</title>
     </head>
     <body>
+        <a href="<c:url value="/login?logout" />">Logout</a>
+        <h2>Registration #<%= registrationId %>: <%= registration.getSubject() %></h2>
         <!-- Fix the fact that these values are null -->
         <%= registration.getUserName() %><br /><br />
         <%= registration.getBody() %><br /><br />

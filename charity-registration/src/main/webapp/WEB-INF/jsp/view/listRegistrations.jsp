@@ -10,6 +10,7 @@
         <title>Charity Associate Support</title>
     </head>
     <body>
+        <a href="<c:url value="/login?logout" />">Logout</a>
         <h2>Registrations</h2>
         <a href="<c:url value="/registrations">
             <c:param name="action" value="create" />

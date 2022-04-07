@@ -4,6 +4,7 @@
         <title>Charity Associate Support</title>
     </head>
     <body>
+        <a href="<c:url value="/login?logout" />">Logout</a>
         <h2>Create a Registration</h2>
         <form method="POST" action="registrations" enctype="multipart/form-data">
             <input type="hidden" name="action" value="create"/>

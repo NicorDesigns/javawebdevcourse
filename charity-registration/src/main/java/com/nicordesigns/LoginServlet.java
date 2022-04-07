@@ -63,13 +63,21 @@ public class LoginServlet extends HttpServlet
             throws ServletException, IOException
     {
     	
-        HttpSession session = request.getSession();
-        if(session.getAttribute("username") != null)
+    	HttpSession session = request.getSession();
+        
+    	if(request.getParameter("logout") != null) // Add logout functionality
+        {
+            session.invalidate();
+            response.sendRedirect("login");
+            return;
+        }
+        else if(session.getAttribute("username") != null)
         {
             response.sendRedirect("registrations");
             return;
         }
-
+    	
+        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
