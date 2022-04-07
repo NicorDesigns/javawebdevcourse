@@ -16,14 +16,14 @@ but implements a different re-direct
 
 	public class PageVisit implements Serializable
 	{
-	  	 private long enteredTimestamp; //Allow for null value
+	  	  private long enteredTimestamp; //Allow for null value
 	
 	     private Long leftTimestamp;
 	
 	     private String request;
 	
 	     private InetAddress ipAddress;
-	// }	
+	 }	
 
 ###### We use the ActivityServlet Class to update our session
 
