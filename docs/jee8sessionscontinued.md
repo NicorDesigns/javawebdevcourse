@@ -274,12 +274,148 @@ We remove session=false in all the JSP's and add the <session-config> to our web
 We can now use the user name to populate our Registration object from the session after the User has logged in
 
 ##### 4. Compiling, testing and debugging our session-registration web application
+
 ##### Use incorrect user name and password
 ##### Use valid user name and password
 ##### Add some Registrations and look at them
 ##### Close the browser and re-open and re-visit Registration creation 
 
 ##### 5. Add a logout link
+
+Add code to the LoginServlet doGet() method
+
+		 //Check if the User is already logged in
+        if(request.getParameter("logout") != null)
+        {
+        	//Send to login page if not
+            session.invalidate();
+            response.sendRedirect("login");
+            return;
+        }
+        else if(session.getAttribute("username") != null) 
+        {
+        	//Send to application if logged in
+        	session.setAttribute("username", session.getAttribute("username").toString());
+            response.sendRedirect("registrations");
+            return;
+        }
+Add a logout link at the top of the JSPs
+
+		<a href="<c:url value="/login?logout" />">Logout</a>
+
+###### Repeat the testing and debugging steps as above
+
+##### 6. Detecting Changes to Sessions Using Listeners
+
+There are several listeners defined in the Servlet API which listens to some form of session activity, you subscribe events by implementing a listener interface by adding a Listener configuration to your app. You can do this programmatically of through annotations and the web.xml configuration file
+
+When something happens that triggers the publication of an Event to which your code is subscribed, the JEE container invokes the corresponding method.
+
+Examples of the Listener Interfaces are :
+
+[httpsessionattributelistener](https://jakarta.ee/specifications/servlet/4.0/apidocs/javax/servlet/http/httpsessionattributelistener)
+
+[httpsessionbindinglistener](https://jakarta.ee/specifications/servlet/4.0/apidocs/javax/servlet/http/httpsessionbindinglistener)
+
+[httpsessionidlistener](https://jakarta.ee/specifications/servlet/4.0/apidocs/javax/servlet/http/httpsessionidlistener)
+
+[httpsessionlistener](https://jakarta.ee/specifications/servlet/4.0/apidocs/javax/servlet/http/httpsessionlistener)
+
+We implement the last two in the SessionListener.java class
+
+		@WebListener
+		public class SessionListener implements HttpSessionListener, HttpSessionIdListener
+		{
+		
+		 	private SimpleDateFormat formatter =
+            new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
+
+		    @Override
+		    public void sessionCreated(HttpSessionEvent e)
+		    {
+		        System.out.println(this.date() + ": Session " + e.getSession().getId() +
+		                " created.");
+		        SessionRegistry.addSession(e.getSession());
+		    }
+		
+		    @Override
+		    public void sessionDestroyed(HttpSessionEvent e)
+		    {
+		        System.out.println(this.date() + ": Session " + e.getSession().getId() +
+		                " destroyed.");
+		        SessionRegistry.removeSession(e.getSession());
+		    }
+		
+		    @Override
+		    public void sessionIdChanged(HttpSessionEvent e, String oldSessionId)
+		    {
+		        System.out.println(this.date() + ": Session ID " + oldSessionId +
+		                " changed to " + e.getSession().getId());
+		        SessionRegistry.updateSessionId(e.getSession(), oldSessionId);
+		    }
+		
+		    private String date()
+		    {
+		        return this.formatter.format(new Date());
+		    }
+		
+		}
+		
+		
+We will now run and debug our web application and look at the Console output of the System.out.println()
+methods in the class above.
+
+
+		
+
+
+##### 7. Maintaining a List of Active Sessions
+
+We use the SessionRegistry.java class to maintain a list that we update within the SessionListener implementation class above. 
+
+
+		public final class SessionRegistry
+		{
+		    private static final Map<String, HttpSession> SESSIONS = new Hashtable<>();
+		
+		    public static void addSession(HttpSession session)
+		    {
+		        SESSIONS.put(session.getId(), session);
+		    }
+		
+		    public static void updateSessionId(HttpSession session, String oldSessionId)
+		    {
+		        synchronized(SESSIONS)
+		        {
+		            SESSIONS.remove(oldSessionId);
+		            addSession(session);
+		        }
+		    }
+		
+		    public static void removeSession(HttpSession session)
+		    {
+		        SESSIONS.remove(session.getId());
+		    }
+		
+		    public static List<HttpSession> getAllSessions()
+		    {
+		        return new ArrayList<>(SESSIONS.values());
+		    }
+		
+		    public static int getNumberOfSessions()
+		    {
+		        return SESSIONS.size();
+		    }
+		
+		    private SessionRegistry()
+		    {
+		
+		    }
+		}
+
+
+
+
 
 
 
