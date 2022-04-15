@@ -371,55 +371,24 @@ methods in the class above.
 
 ##### 7. Maintaining a List of Active Sessions
 
-We use the SessionRegistry.java class to maintain a list that we update within the SessionListener implementation class above. 
+We use our own implementation of the  
+
+[httpsessionlistener](https://jakarta.ee/specifications/servlet/4.0/apidocs/javax/servlet/http/httpsessionlistener) and [httpsessionidlistener](https://jakarta.ee/specifications/servlet/4.0/apidocs/javax/servlet/http/httpsessionidlistener) classes, in order to implement a Listener Interface class: 
+[SessionListener.java](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-more-session-management-finish/charity-registration/src/main/java/com/nicordesigns/SessionListener.java)
+
+To keep an in memory database in our Charity Registration Application:
+
+We create the following class:
+[InMemorySessionDB.java](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-more-session-management-finish/charity-registration/src/main/java/com/nicordesigns/InMemorySessionDB.java)
+This class stores all the Heap References to all the created Session Objects
 
 
-		public final class SessionRegistry
-		{
-		    private static final Map<String, HttpSession> SESSIONS = new Hashtable<>();
-		
-		    public static void addSession(HttpSession session)
-		    {
-		        SESSIONS.put(session.getId(), session);
-		    }
-		
-		    public static void updateSessionId(HttpSession session, String oldSessionId)
-		    {
-		        synchronized(SESSIONS)
-		        {
-		            SESSIONS.remove(oldSessionId);
-		            addSession(session);
-		        }
-		    }
-		
-		    public static void removeSession(HttpSession session)
-		    {
-		        SESSIONS.remove(session.getId());
-		    }
-		
-		    public static List<HttpSession> getAllSessions()
-		    {
-		        return new ArrayList<>(SESSIONS.values());
-		    }
-		
-		    public static int getNumberOfSessions()
-		    {
-		        return SESSIONS.size();
-		    }
-		
-		    private SessionRegistry()
-		    {
-		
-		    }
-		}
+In our SessionListener Class we add, remove and update the Session References to the In Memory Database when the Sessions are created, destroyed or updated.
+[SessionListener.java](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-more-session-management-finish/charity-registration/src/main/java/com/nicordesigns/SessionListener.java)
 
+We create a Servlet to display the list of Sessions:
 
-
-
-
-
-
-
+and a sessions.jsp to display these Sessions.
 
 
 
