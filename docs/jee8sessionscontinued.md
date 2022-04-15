@@ -388,7 +388,11 @@ In our SessionListener Class we add, remove and update the Session References to
 
 We create a Servlet to display the list of Sessions:
 
+[SessionListServlet.java](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-more-session-management-finish/charity-registration/src/main/java/com/nicordesigns/SessionListServlet.java)
+
 and a sessions.jsp to display these Sessions.
+
+[sessions.jsp](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-more-session-management-finish/charity-registration/src/main/webapp/WEB-INF/jsp/view/sessions.jsp)
 
 
 
