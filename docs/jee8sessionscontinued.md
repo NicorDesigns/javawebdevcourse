@@ -91,7 +91,7 @@ but implements a different re-direct
 	        request.getRequestDispatcher("/WEB-INF/jsp/view/viewSessionActivity.jsp")
 	               .forward(request, response);
 	    }
-}
+	}
 			
 ###### We use the viewSessionActivity.jsp to display our session
 
@@ -146,10 +146,10 @@ but implements a different re-direct
 	</html>
 	
 ##### 2. Compiling, testing and debugging our session-activity web application
-##### Add different paths and query parameters to the URL replace /home but leave do
+Add different paths and query parameters to the URL replace /home but leave do
 
 ##### 3. Applying Sessions in our charity-registration module
-##### We add the <session-config> entry to our web.xml and and an in memory database to store Users and a login page and servlet
+We add the <session-config> entry to our web.xml and and an in memory database to store Users and a login page and servlet
 
 ###### We add a login to the charity-registration app:
 We remove session=false in all the JSP's and add the <session-config> to our web.xml in order to use cookies 
@@ -275,10 +275,10 @@ We can now use the user name to populate our Registration object from the sessio
 
 ##### 4. Compiling, testing and debugging our session-registration web application
 
-##### Use incorrect user name and password
-##### Use valid user name and password
-##### Add some Registrations and look at them
-##### Close the browser and re-open and re-visit Registration creation 
+Use incorrect user name and password
+Use valid user name and password
+Add some Registrations and look at them
+Close the browser and re-open and re-visit Registration creation 
 
 ##### 5. Add a logout link
 
@@ -358,16 +358,11 @@ We implement the last two in the SessionListener.java class
 		    {
 		        return this.formatter.format(new Date());
 		    }
-		
+
 		}
-		
 		
 We will now run and debug our web application and look at the Console output of the System.out.println()
 methods in the class above.
-
-
-		
-
 
 ##### 7. Maintaining a List of Active Sessions
 
@@ -393,6 +388,7 @@ We create a Servlet to display the list of Sessions:
 and a sessions.jsp to display these Sessions.
 
 [sessions.jsp](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-more-session-management-finish/charity-registration/src/main/webapp/WEB-INF/jsp/view/sessions.jsp)
+
 
 
 

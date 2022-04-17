@@ -221,6 +221,7 @@ invalidate - removes the current session and its data
 
 We look at all the functionality provided by our app and we also look at what happens with the session 
 when you close the browser
+
      	
 Check in the end Git branch of this slide show 
 
