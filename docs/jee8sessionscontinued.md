@@ -389,11 +389,6 @@ and a sessions.jsp to display these Sessions.
 
 [sessions.jsp](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-more-session-management-finish/charity-registration/src/main/webapp/WEB-INF/jsp/view/sessions.jsp)
 
-
-
-
-
-     	
 Check in the end Git branch of this slide show 
 
 ##### [More Maintaining State Using Sessions Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-more-session-management-finish)
