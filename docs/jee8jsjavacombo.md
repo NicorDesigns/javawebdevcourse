@@ -99,69 +99,71 @@ presentation layer which is the viewRegistration.jsp
     
 now forwards to the following registrationForm JSP internally without using browser http redirect
 
-	<%@ page session="false" %>
 	<!DOCTYPE html>
 	<html>
 	    <head>
-	        <title>Customer Support</title>
+	        <title>Charity Associate Support</title>
 	    </head>
 	    <body>
+	        <a href="<c:url value="/login?logout" />">Logout</a>
 	        <h2>Create a Registration</h2>
 	        <form method="POST" action="registrations" enctype="multipart/form-data">
 	            <input type="hidden" name="action" value="create"/>
-	            Your Name<br/>
-	            <input type="text" name="customerName"><br/><br/>
+	            
 	            Subject<br/>
 	            <input type="text" name="subject"><br/><br/>
 	            Body<br/>
 	            <textarea name="body" rows="5" cols="30"></textarea><br/><br/>
 	            <b>Attachments</b><br/>
-	            <input type="file" name="file1"/><br/><br/>
+	            <input type="file" name="file"/><br/><br/>
 	            <input type="submit" value="Submit"/>
 	        </form>
 	    </body>
 	</html>
+
 	          
 #### 4. Designing for the View Layer
 
 Next we look at the viewRegistration.jsp
 
-	<%@ page session="false" import="com.nicordesigns.Attachment, 			com.nicordesigns.Registration" %>
-		<%
-		    String registrationId = (String)request.getAttribute("RegistrationId");
-			    Registration registration =(Registration)request.getAttribute("Registration");
-				%>
-		<!DOCTYPE html>
-		<html>
-	<head>
-        <title>Customer Support</title>
-    </head>
-    <body>
-        <h2>Registration #<%= registrationId %>: <%= registration.getSubject() %></h2>
-        <i>Customer Name - <%= registration.getCustomerName() %></i><br /><br />
-        <%= registration.getBody() %><br /><br />
-        <%
-            if(registration.getNumberOfAttachments() > 0)
-            {
-                %>Attachments: <%
-                int i = 0;
-                for(Attachment a : registration.getAttachments())
-                {
-                    if(i++ > 0)
-                        out.print(", ");
-                    %><a href="<c:url value="/registrations">
-                        <c:param name="action" value="download" />
-                        <c:param name="RegistrationId" value="<%= registrationId %>" />
-                        <c:param name="attachment" value="<%= a.getName() %>" />
-                    </c:url>"><%= a.getName() %></a><%
-                }
-                %><br /><br /><%
-            }
-        %>
-        <a href="<c:url value="/registrations" />">Return to list Registrations</a>
-    </body>
+	<%@ page import="com.nicordesigns.Attachment, com.nicordesigns.Registration" %>
+	<%
+	    String registrationId = (String)request.getAttribute("registrationId");
+	    Registration registration = (Registration)request.getAttribute("registration");
+	%>
+	<!DOCTYPE html>
+	<html>
+	    <head>
+	        <title>Charity Associate Support</title>
+	    </head>
+	    <body>
+	        <a href="<c:url value="/login?logout" />">Logout</a>
+	        <h2>Registration #<%= registrationId %>: <%= registration.getSubject() %></h2>
+	        <!-- Fix the fact that these values are null -->
+	        <%= registration.getUserName() %><br /><br />
+	        <%= registration.getBody() %><br /><br />
+	        <%
+	            if(registration.getNumberOfAttachments() > 0)
+	            {
+	                %>Attachments: <%
+	                int i = 0;
+	                for(Attachment a : registration.getAttachments())
+	                {
+	                    if(i++ > 0)
+	                        out.print(", ");
+	                    %><a href="<c:url value="/registrations">
+	                        <c:param name="action" value="download" />
+	                        <c:param name="registrationId" value="<%= registrationId %>" />
+	                        <c:param name="attachment" value="<%= a.getName() %>" />
+	                    </c:url>"><%= a.getName() %></a><%
+	                }
+	                %><br /><br /><%
+	            }
+	        %>
+	        <a href="<c:url value="/registrations" />">Return to list Registrations</a>
+	    </body>
 	</html>
-	
+
 we see that the presentation layer requires registrationId and registration which is why we update the
 viewRegistration method in the RegistrationServlet
 
@@ -184,7 +186,7 @@ viewRegistration method in the RegistrationServlet
 
 finally we separate the view and presentation of the listRegistration.jsp
 
-	<%@ page session="false" import="java.util.Map, com.nicordesigns.Attachment, 		com.nicordesigns.Registration" %>
+		<%@ page import="java.util.Map, com.nicordesigns.Attachment, com.nicordesigns.Registration" %>
 		<%
 		    @SuppressWarnings("unchecked")
 		    Map<Integer, Registration> registrationDatabase =
@@ -192,35 +194,36 @@ finally we separate the view and presentation of the listRegistration.jsp
 		%>
 		<!DOCTYPE html>
 		<html>
-    <head>
-        <title>Customer Support</title>
-    </head>
-    <body>
-        <h2>Registrations</h2>
-        <a href="<c:url value="/Registrations">
-            <c:param name="action" value="create" />
-        </c:url>">Create Registration</a><br /><br />
-        <%
-            if(registrationDatabase.size() == 0)
-            {
-                %><i>There are no Registrations in the system.</i><%
-            }
-            else
-            {
-                for(int id : registrationDatabase.keySet())
-                {
-                    String idString = Integer.toString(id);
-                    Registration registration = registrationDatabase.get(id);
-                    %>Registration #<%= idString %>: <a href="<c:url value="/Registrations">
-                        <c:param name="action" value="view" />
-                        <c:param name="RegistrationId" value="<%= idString %>" />
-                    </c:url>"><%= registration.getSubject() %></a> (customer:
-        			<%= registration.getCustomerName() %>)<br /><%
-                }
-            }
-        %>
-    </body>
-	</html>
+		    <head>
+		        <title>Charity Associate Support</title>
+		    </head>
+		    <body>
+		        <a href="<c:url value="/login?logout" />">Logout</a>
+		        <h2>Registrations</h2>
+		        <a href="<c:url value="/registrations">
+		            <c:param name="action" value="create" />
+		        </c:url>">Create Registration</a><br /><br />
+		        <%
+		            if(registrationDatabase.size() == 0)
+		            {
+		                %><i>There are no Registrations in the system.</i><%
+		            }
+		            else
+		            {
+		                for(int id : registrationDatabase.keySet())
+		                {
+		                    String idString = Integer.toString(id);
+		                    Registration registration = registrationDatabase.get(id);
+		                    %>Registration #<%= idString %>: <a href="<c:url value="/registrations">
+		                        <c:param name="action" value="view" />
+		                        <c:param name="registrationId" value="<%= idString %>" />
+		                    </c:url>"><%= registration.getSubject() %></a> (User Name:
+		        			<%= registration.getUserName() %>)<br /><%
+		                }
+		            }
+		        %>
+		    </body>
+		</html>
 		 
 and we update the listRegistrations method in the RegistrationServlet.java
 

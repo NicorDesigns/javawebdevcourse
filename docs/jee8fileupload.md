@@ -142,32 +142,31 @@ We specify that a file has to be downloaded, we use binary stream to write the f
 ### 5. The logic for uploading files in our Servlet
     
 
-	private void createRegistration(HttpServletRequest request,
-                              HttpServletResponse response)
-            throws ServletException, IOException
-    {
-        Registration registration = new Registration();
-        registration.setCustomerName(request.getParameter("customerName"));
-        registration.setSubject(request.getParameter("subject"));
-        registration.setBody(request.getParameter("body"));
+	private void createRegistration(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Registration registration = new Registration();
+		
+		HttpSession session = request.getSession();
+		registration.setUserName((String) session.getAttribute("username"));
+		
+		registration.setSubject(request.getParameter("subject"));
+		registration.setBody(request.getParameter("body"));
 
-        Part filePart = request.getPart("file1");
-        if(filePart != null && filePart.getSize() > 0)
-        {
-            Attachment attachment = this.processAttachment(filePart);
-            if(attachment != null)
-                registration.addAttachment(attachment);
-        }
+		Part filePart = request.getPart("file");
+		if (filePart != null && filePart.getSize() > 0) {
+			Attachment attachment = this.processAttachment(filePart);
+			if (attachment != null)
+				registration.addAttachment(attachment);
+		}
 
-        int id;
-        synchronized(this)
-        {
-            id = this.REGISTRATION_ID_SEQUENCE++;
-            this.registrationDatabase.put(id, registration);
-        }
+		int id;
+		synchronized (this) {
+			id = this.REGISTRATION_ID_SEQUENCE++;
+			this.registrationDatabase.put(id, registration);
+		}
 
-        response.sendRedirect("registrations?action=view&registrationId=" + id);
-    }
+		response.sendRedirect("registrations?action=view&registrationId=" + id);
+	}
 
 This method gets the InputStream from the request and copies it to the Attachment object and assigns
 it a name 

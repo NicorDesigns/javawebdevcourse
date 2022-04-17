@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Customer Support</title>
+        <title>Charity Registration</title>
     </head>
     <body>
         <a href="<c:url value="/login?logout" />">Logout</a>
