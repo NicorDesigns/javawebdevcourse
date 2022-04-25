@@ -11,5 +11,7 @@
     <module>charity-registration</module>
     <module>charity-session</module>
     <module>session-activity</module>
+    <module>charity-admin</module>
+
   </modules>
 </project>
