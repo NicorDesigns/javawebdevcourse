@@ -18,7 +18,7 @@
         Session Scope: ${sessionScope["sessionAttribute"]}<br />
         Request Scope: ${requestScope["requestAttribute"]}<br />
         User Parameter: ${param["user"]}<br />
-        Color Multi-Param: ${fn:join(paramValues["colors"], ', ')}<br />
+        Color Multi-Param: ${join(paramValues["colors"], ', ')}<br />
         Accept Header: ${header["Accept"]}<br />
         Session ID Cookie Value: ${cookie["JSESSIONID"].value}<br />
     </body>

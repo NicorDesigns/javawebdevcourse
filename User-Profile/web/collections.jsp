@@ -1,4 +1,4 @@
-<%@ page import="com.wrox.User" %>
+<%@ page import="com.nicordesigns.User" %>
 <%@ page import="java.util.ArrayList" %>
 <%
     ArrayList<User> users = new ArrayList<>();
