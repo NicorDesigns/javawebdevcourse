@@ -102,13 +102,60 @@ Can be mapped from Java to the expression language:
 
 #### 3. Using scoped variables in EL expressions 
 
-[Implicit Variables:](https://jakarta.ee/specifications/platform/9/apidocs/jakarta/servlet/jsp/el/implicitobjectelresolver)
+[Implicit EL Variables:](https://jakarta.ee/specifications/platform/9/apidocs/jakarta/servlet/jsp/el/implicitobjectelresolver)
 
 EL Implicit Variables and Implicit Scope
 
+For this we will look at the User-Profile Example
 
-This involves the WROX User-Profile Example
+We re-use web.xml from our previous examples and index.jsp will redirect to the profile servlet
 
+The base.jspf declares the EL function libraries which are brought in by the following Maven dependency: 
+
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>javax.servlet.jsp.jstl</artifactId>
+			<version>1.2.5</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.servlet.jsp</groupId>
+					<artifactId>jsp-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.servlet.jsp.jstl</groupId>
+					<artifactId>jstl-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+Request Scope 	- begins when the server receives a request and ends when the response has been sent back from the server.
+				- is accessible through the Request Object	
+
+Session Scope	- Is larger than request scope
+				- Is accessible through the HttpSession Object
+				
+Page Scope		- Is available in the JSP (page) only and its request
+				- Is accessible through the pageContext Object
+				
+Application Scope - Is globally available in the web application
+				  - Is accessible through the ServletContext Object									
+		
+
+###### EL Implicit Scope
+
+Can resolve an attribute in all of the above scopes. 
+
+An EL variable is resolved as follows: First check if it is an Implicit Variable, then check if it is a Page Scope variable, then check if it is a request scoped variable, then session and finally application.
+
+We see this in our User Profile code example in how the User Attributes are displayed using EL variables
+
+   
+				
 ##### [Jakarta Expression Language Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-session-management-finish)
 
     
