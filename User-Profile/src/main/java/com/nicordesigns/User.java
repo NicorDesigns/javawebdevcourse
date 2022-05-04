@@ -1,11 +1,14 @@
 package com.nicordesigns;
 
+import java.io.Serializable;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class User
+public class User implements Serializable
 {
-    private long userId;
+    private static final long serialVersionUID = 9023523801162591611L;
+
+	private long userId;
 
     private String username;
 

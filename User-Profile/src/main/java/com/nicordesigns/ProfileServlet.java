@@ -14,7 +14,9 @@ import java.util.Hashtable;
 )
 public class ProfileServlet extends HttpServlet
 {
-    @Override
+    private static final long serialVersionUID = -637956688438605803L;
+
+	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
@@ -30,7 +32,11 @@ public class ProfileServlet extends HttpServlet
         permissions.put("admin", false);
         user.setPermissions(permissions);
 
+        //1. 
         request.setAttribute("user", user);
+        //2. request.getSession().setAttribute("user", user);
+        //3. this.getServletContext().setAttribute("user", user);
+        
         request.getRequestDispatcher("/WEB-INF/jsp/view/profile.jsp")
                .forward(request, response);
     }

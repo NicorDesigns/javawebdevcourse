@@ -9,18 +9,18 @@ In order to properly separate the Front End Presentation Layer from the Back End
 For presentation layer logic such as iterating through a list we will use the Expression Language
 
 
-##### Introducing The Jakarta EL 4.0 (Jakarta EE 8)
+##### Introducing The Jakarta EL 3.0 (Jakarta EE 8)
 
-[EL 4.0 Documentation:](https://jakarta.ee/specifications/expression-language/4.0/)
+[EL 3.0 Documentation:](https://jakarta.ee/specifications/expression-language/3.0/)
 
-[EL 4.0 Specification:](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html)
+[EL 3.0 Specification:](https://jakarta.ee/specifications/expression-language/3.0/expression-language-spec-3.0.html)
 
-[Jakarta EL Maven Co-ordinates](https://mvnrepository.com/artifact/jakarta.el/jakarta.el-api)
+[Jakarta EL 3.0 Maven Co-ordinates](https://search.maven.org/artifact/jakarta.el/jakarta.el-api/3.0.3/jar)
 
 Which falls or is related to the 
-[Jakarta JSP Specification:](https://jakarta.ee/specifications/pages/)
+[Jakarta JSP 2.3 Specification:](https://jakarta.ee/specifications/pages/2.3/)
 
-##### A look at Eval Expressions
+##### A look at Eval Expressions (EL 4.0 documentation)
 
 [https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#eval-expression](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#eval-expression)
 
@@ -53,9 +53,9 @@ You can also put expressions inside HTML and JSP tags for assigning attribute va
 #### 2. Writing with the EL Syntax
 
 
-Expression language like Javascript is loosely typed but it still adheres to a rigourus syntax. Expressions always has to evaluate to a value and you can assign the expression to a value
+Expression language like javascript is loosely typed but it still adheres to a rigourus syntax. Expressions always has to evaluate to a value and you can assign the expression to a value
 
-##### [Reserved words: ](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#reserved-words) 
+##### [Reserved words 4.0: ](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#reserved-words) 
 
 These reserved words more or less perform the same functions as you are used to in Java 
 
@@ -65,7 +65,7 @@ Both are basically the same as you are used to in Java
 
 ##### [Operator Precedence:](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#operator-precedence)
 
-Note the second to last Lamda Expression which also appeared in Java 8
+Note the second to last Lambda Expression which also appeared in Java 8
 
 #####[Literal Values:](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#literals)
 
@@ -85,7 +85,7 @@ Not to be confused by [Lambda Expressions](https://jakarta.ee/specifications/exp
 
 
 
-##### [API DOC](https://jakarta.ee/specifications/expression-language/4.0/apidocs/)
+##### [API DOC](https://jakarta.ee/specifications/expression-language/3.0/apidocs/)
 
 
 ##### [Static Field and Method Reference](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#static-field-and-method-reference)
@@ -102,9 +102,14 @@ Can be mapped from Java to the expression language:
 
 #### 3. Using scoped variables in EL expressions 
 
-[Implicit EL Variables:](https://jakarta.ee/specifications/platform/9/apidocs/jakarta/servlet/jsp/el/implicitobjectelresolver)
+[Implicit EL Variables:](https://jakarta.ee/specifications/webprofile/8/apidocs/javax/servlet/jsp/el/implicitobjectelresolver)
 
+[ELResolver](https://jakarta.ee/specifications/webprofile/8/apidocs/javax/el/elresolver)
+
+Except for the pageContext they are all Map Objecs, 
 EL Implicit Variables and Implicit Scope
+
+
 
 For this we will look at the User-Profile Example
 
@@ -132,6 +137,9 @@ The base.jspf declares the EL function libraries which are brought in by the fol
 				</exclusion>
 			</exclusions>
 		</dependency>
+	
+
+##### Scope Overview
 		
 Request Scope 	- begins when the server receives a request and ends when the response has been sent back from the server.
 				- is accessible through the Request Object	
@@ -140,19 +148,29 @@ Session Scope	- Is larger than request scope
 				- Is accessible through the HttpSession Object
 				
 Page Scope		- Is available in the JSP (page) only and its request
-				- Is accessible through the pageContext Object
+				- Is accessible through the PageContext and  JSPObject
 				
 Application Scope - Is globally available in the web application
 				  - Is accessible through the ServletContext Object									
 		
 
-###### EL Implicit Scope
+##### EL Implicit Scope
 
 Can resolve an attribute in all of the above scopes. 
 
-An EL variable is resolved as follows: First check if it is an Implicit Variable, then check if it is a Page Scope variable, then check if it is a request scoped variable, then session and finally application.
+An EL variable is resolved as follows: 
+First check if it is an Implicit Variable, then check if it is a Page Scope variable, then check if it is a request scoped variable, then session and finally application. This is done through the related Context Object and its getAttribute method 
 
 We see this in our User Profile code example in how the User Attributes are displayed using EL variables
+
+We first look at the User Class , the Profile Servlet and the profile.jsp code in our example project and we run it.
+
+We change the scopes in the Profile Servlet
+
+			//1. request.setAttribute("user", user);
+        	//2. request.getSession().setAttribute("user", user);
+        	//3. this.getServletContext().setAttribute("user", user);
+        
 
    
 				
