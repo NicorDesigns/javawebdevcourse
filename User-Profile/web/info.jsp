@@ -1,3 +1,5 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!-- Set attributes for scopes -->
 <%
     application.setAttribute("appAttribute", "foo");
     pageContext.setAttribute("pageAttribute", "bar");
@@ -9,6 +11,7 @@
     <head>
         <title>Information</title>
     </head>
+    <!-- Output data according to scope -->
     <body>
         Remote Address: ${pageContext.request.remoteAddr}<br />
         Request URL: ${pageContext.request.requestURL}<br />
@@ -18,7 +21,7 @@
         Session Scope: ${sessionScope["sessionAttribute"]}<br />
         Request Scope: ${requestScope["requestAttribute"]}<br />
         User Parameter: ${param["user"]}<br />
-        Color Multi-Param: ${join(paramValues["colors"], ', ')}<br />
+        Color Multi-Param: ${fn:join(paramValues["colors"], ', ')}<br />
         Accept Header: ${header["Accept"]}<br />
         Session ID Cookie Value: ${cookie["JSESSIONID"].value}<br />
     </body>

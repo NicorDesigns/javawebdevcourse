@@ -111,7 +111,21 @@ EL Implicit Variables and Implicit Scope
 
 
 
-For this we will look at the User-Profile Example
+For this we will look at the user-profile example
+
+[http://localhost:8080/user-profile/info.jsp?user=nicordesigns](http://localhost:8080/user-profile/info.jsp?user=nicordesigns)
+
+[http://localhost:8080/user-profile/info.jsp?user=nicordesigns&colors=green&colors=red](http://localhost:8080/user-profile/info.jsp?user=nicordesigns%colors=green&colors=red)
+
+[http://localhost:8080/user-profile/scope.jsp](http://localhost:8080/user-profile/scope.jsp)
+
+Demonstrates the implicit scope order:
+
+a = page
+b = request
+c = session
+d = application
+
 
 We re-use web.xml from our previous examples and index.jsp will redirect to the profile servlet
 
@@ -171,8 +185,6 @@ We change the scopes in the Profile Servlet
         	//2. request.getSession().setAttribute("user", user);
         	//3. this.getServletContext().setAttribute("user", user);
         
-
-   
 				
 ##### [Jakarta Expression Language Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-session-management-finish)
 
