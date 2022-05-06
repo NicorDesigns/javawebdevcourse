@@ -20,7 +20,7 @@ For presentation layer logic such as iterating through a list we will use the Ex
 Which falls or is related to the 
 [Jakarta JSP 2.3 Specification:](https://jakarta.ee/specifications/pages/2.3/)
 
-##### A look at Eval Expressions (EL 4.0 documentation)
+##### A look at Evaluation Expressions (EL 4.0 documentation)
 
 [https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#eval-expression](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#eval-expression)
 
@@ -50,24 +50,24 @@ that will display the users name.
 You can also put expressions inside HTML and JSP tags for assigning attribute values as text color , font etc. You can also use the inside inline javascript and Cascading Style Sheets
 
 
-#### 2. Writing with the EL Syntax
+#### 2. Writing (code) with the EL Syntax
 
 
 Expression language like javascript is loosely typed but it still adheres to a rigourus syntax. Expressions always has to evaluate to a value and you can assign the expression to a value
 
-##### [Reserved words 4.0: ](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#reserved-words) 
+##### [Reserved words in 4.0](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#reserved-words) 
 
 These reserved words more or less perform the same functions as you are used to in Java 
 
-##### [Literal Expression:](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#literal-expression)
+##### [Literal Expressions in 4.0](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#literal-expression)
 
 Both are basically the same as you are used to in Java
 
-##### [Operator Precedence:](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#operator-precedence)
+##### [Operator Precedence in 4.0](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#operator-precedence)
 
 Note the second to last Lambda Expression which also appeared in Java 8
 
-#####[Literal Values:](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#literals)
+#####[Literal Values in 4.0](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#literals)
 
 Strings can have both double quotes and single quotes as in Javascript, you much take care when using strings in HTML and JSP tag attributes tough because you can end up wasting a day or more with weird syntax errors in your JSP. 
 When dealing with special characters in non-english languages you will also often have to use the escape syntax.
