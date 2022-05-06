@@ -186,7 +186,7 @@ We change the scopes in the Profile Servlet
         	//3. this.getServletContext().setAttribute("user", user);
         
 				
-##### [Jakarta Expression Language Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-session-management-finish)
+##### [Jakarta Expression Language Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-expression-language-finish)
 
     
 
