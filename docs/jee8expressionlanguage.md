@@ -184,6 +184,15 @@ We change the scopes in the Profile Servlet
 			//1. request.setAttribute("user", user);
         	//2. request.getSession().setAttribute("user", user);
         	//3. this.getServletContext().setAttribute("user", user);
+        	
+#### 4. Stream and Pipeline operations on Collections
+
+[https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#stream-and-pipeline](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html#stream-and-pipeline)
+
+The stream method is present on every Collection in Java. java.util.Arrays also provides many static methods to return streams.
+As in the official documentation listed above you can perform many operations on a Stream and build a pipeline.
+In the example the .toList() is known as a terminal operation. 
+        	
         
 				
 ##### [Jakarta Expression Language Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-expression-language-finish)
