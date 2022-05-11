@@ -297,9 +297,22 @@ The aggregate functions that you can perform on a Stream is min, max, average, s
 
 #### Putting the Stream API to use
 
-We use the Collections.jsp to demonstrate this is in the user-profile example
+We use the Collections.jsp to demonstrate this is in the user-profile example:
 
-        
+
+First we look at the User construction:
+
+[https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-expression-language-finish/User-Profile/src/main/java/com/nicordesigns/User.java](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-expression-language-finish/User-Profile/src/main/java/com/nicordesigns/User.java)
+
+[https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-expression-language-finish/User-Profile/web/collections.jsp](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-expression-language-finish/User-Profile/web/collections.jsp)
+       
+#### Replacing the Java Code with the Expression Language in Charity Registration
+
+Update the base.jspf file to contain a tag library declaration
+RegistrationForm.jsp has no Java code but viewRegistration.jsp can be updated with EL
+So can sessions.jsp
+
+We will run and test the changes
 				
 ##### [Jakarta Expression Language Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-expression-language-finish)
 

@@ -1,3 +1,4 @@
+<%--@elvariable id="numberOfSessions" type="java.lang.Integer"--%>
 <%@ page import="java.util.List" %>
 <%!
     private static String toString(long timeInterval)

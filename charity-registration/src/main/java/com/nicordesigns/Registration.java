@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Registration
 {
-    private String username;
+    private String userName;
 
     private String subject;
 
@@ -16,12 +16,12 @@ public class Registration
 
     public String getUserName()
     {
-        return username;
+        return userName;
     }
 
-    public void setUserName(String username)
+    public void setUserName(String userName)
     {
-        this.username = username;
+        this.userName = userName;
     }
 
     public String getSubject()

@@ -17,6 +17,7 @@
     <body>
     	<!-- Users gets filtered by those User names that contains a 1 -->
     	<!-- Orders by Last Name followed by First Name -->
+    	<!-- Maps to user, first, last name -->
     	<!-- Terminates into a List -->
         ${users.stream()
                .filter(u -> fn:contains(u.username, '1'))
