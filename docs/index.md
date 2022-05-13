@@ -26,4 +26,7 @@ An introduction to Java Web Development with JEE 8:
 
 12. [Maintaining State Using Sessions in our JEE 8 Web App Module](jee8sessions.md)
 
+13. [Understanding Jakarta Expression Language 3.0](jee8expressionlanguage.md)
+
+
 
