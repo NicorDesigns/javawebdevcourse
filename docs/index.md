@@ -28,5 +28,8 @@ An introduction to Java Web Development with JEE 8:
 
 13. [Understanding Jakarta Expression Language 3.0](jee8expressionlanguage.md)
 
+13. [Using the Java Standard Tag Library 1.2 in our JEE 8 Web Applications](jee8jstl12.md)
+
+
 
 
