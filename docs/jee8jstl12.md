@@ -13,11 +13,9 @@
 
 #### 5. Using the XML Processing Tag Library
 
-#### 6. Using the XML Processing Tag Library
+#### 6. Replacing Java Code with JSP Tags
 
-#### 7. Replacing Java Code with JSP Tags
-
-#### 8. Review and Summary
+#### 7. Review and Summary
 
 				
 ##### [Jakarta Standard Tag Library Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/j2ee8web-jstl-finish)
