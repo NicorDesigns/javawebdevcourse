@@ -13,7 +13,7 @@
             <c:otherwise>
                 <c:forEach items="${addresses}" var="charity">
                     <b>
-                        <c:out value="${charity.lastName}, ${charity.firstName}" />
+                        <c:out value="${charity.charityName}, ${charity.charityId}" />
                     </b><br />
                     <c:out value="${charity.address}" /><br />
                     <c:out value="${charity.phoneNumber}" /><br />

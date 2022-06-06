@@ -17,36 +17,36 @@ public class Address implements Comparable<Address>
 
     private Instant dateCreated;
 
-    public Address(String firstName, String lastName, String phoneNumber,
+    public Address(String charityId, String charityName, String phoneNumber,
                    String address, MonthDay registrationday,
                    Instant dateCreated)
     {
-        this.charityId = firstName;
-        this.charityName = lastName;
+        this.charityId = charityId;
+        this.charityName = charityName;
         this.phoneNumber = phoneNumber;
         this.webAddress = address;
         this.setRegistrationday(registrationday);
         this.dateCreated = dateCreated;
     }
 
-    public String getFirstName()
+    public String getCharityId()
     {
         return charityId;
     }
 
-    public void setFirstName(String firstName)
+    public void setCharityId(String charityId)
     {
-        this.charityId = firstName;
+        this.charityId = charityId;
     }
 
-    public String getLastName()
+    public String getCharityName()
     {
         return charityName;
     }
 
-    public void setLastName(String lastName)
+    public void setCharityName(String charityName)
     {
-        this.charityName = lastName;
+        this.charityName = charityName;
     }
 
     public String getPhoneNumber()
