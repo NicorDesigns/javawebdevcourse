@@ -3,11 +3,11 @@
 
 ##### [Jakarta Standard Tag Library Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/j2ee8web-jstl-start)
 
-#### 1. Introducing JSTL tags in JSP
+#### 1. [Introducing JSTL tags in JSP](jee8jstlintro.md)
 
-#### 2. Using the Core Tag Library
+#### 2. [Using the Core Tag Library](jee8jstlcore.md)
 
-#### 3. Using the Formatting and Internationalization Tag Library 
+#### 3. [Using the Formatting and Internationalization Tag Library](jee8jstlfmt.md) 
 
 #### 4. Using the Database Access Tag Library
 
