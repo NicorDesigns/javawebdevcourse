@@ -60,12 +60,32 @@ the we expand on our web.xml by adding the following context initialization para
         <param-value>CharityAddressBook-messages</param-value>
     </context-param>
 
+[https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/webapp/WEB-INF/web.xml](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/webapp/WEB-INF/web.xml)
+
+
 this helps to establish a resources bundle that will be used to store all the localized language messages    
 
-[https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/webapp/index.jsp](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/webapp/index.jsp)
 
 
-Our base.jspf
+The container (Tomcat) in our case looks for the resource bundle anywhere on our Java Class Path of our web application
+with the following name:
+
+	CharityAddressBook-messages_[language]_[region].properties
+	
+if it does not find that it looks for
+	
+	CharityAddressBook-messages_[language].properties
+	
+and finally if that is not found it switches to a fall back locale US English in my case 
+ 		
+
+    CharityAddressBook-messages_en_US.properties
+
+
+In our case we will follow the Maven convention over the option of configuration and place our resource bundle file
+in the src/main/resources directory
+
+
 
 [https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/webapp/WEB-INF/jsp/base.jspf](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/webapp/WEB-INF/jsp/base.jspf)
 
