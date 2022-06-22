@@ -5,6 +5,12 @@
 	id="WebApp_ID" version="4.0">
 
     <display-name>Charity Address Book Application</display-name>
+    
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>CharityAddressBook-messages</param-value>
+    </context-param>
+    
 
     <jsp-config>
         <jsp-property-group>
