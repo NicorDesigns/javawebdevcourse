@@ -1,5 +1,4 @@
 # Internationaizarion Tags
-Created: 2022-06-17 14:42
 
 	<fmt:message>
 		
@@ -84,7 +83,6 @@ and finally if that is not found it switches to a fall back locale US English in
 
 In our case we will follow the Maven convention over the option of configuration and place our resource bundle file
 in the src/main/resources directory
-
 
 
 [https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/webapp/WEB-INF/jsp/base.jspf](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/webapp/WEB-INF/jsp/base.jspf)
