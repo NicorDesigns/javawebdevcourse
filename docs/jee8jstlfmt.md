@@ -81,28 +81,17 @@ and finally if that is not found it switches to a fall back locale US English in
     CharityAddressBook-messages_en_US.properties
 
 
-In our case we will follow the Maven convention over the option of configuration and place our resource bundle file
+In our case we will follow the option of Maven convention over configuration and place our resource bundle file
 in the src/main/resources directory
 
 
-[https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/webapp/WEB-INF/jsp/base.jspf](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/webapp/WEB-INF/jsp/base.jspf)
+[https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-jstl-finish/charity-address-book/src/main/resources](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-jstl-finish/charity-address-book/src/main/resources)
 
-We use the Charity Address POJO to list out the Address Book
+these files should then be copied to the class path locations during our Maven Build
 
-[https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/java/com/nicordesigns/Address.java](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/java/com/nicordesigns/Address.java)
+We change the ListServlet to account for a new language option as follows:
 
 
-The ListServlet
-
-[https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/java/com/nicordesigns/ListServlet.java](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/java/com/nicordesigns/ListServlet.java)
-
-creates an in memory database of Charity Addresses
-
-and the list.jsp
-
-use the Core Tag Library to list out the Address Book
-
-[https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/webapp/WEB-INF/jsp/view/list.jsp](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/webapp/WEB-INF/jsp/view/list.jsp)
 
 we will compile and run our app and have a look at
 

@@ -5,11 +5,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.jstl.core.Config;
+
 import java.io.IOException;
 import java.time.Instant;
 import java.time.Month;
 import java.time.MonthDay;
 import java.util.Collections;
+import java.util.Locale;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -39,6 +42,11 @@ public class ListServlet extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+    	String language = request.getParameter("language");
+        if("afrikaans".equalsIgnoreCase(language))
+            Config.set(request, Config.FMT_LOCALE, Locale.forLanguageTag("af-ZA"));
+        
+        
         if(request.getParameter("empty") != null)
             request.setAttribute("addresses", Collections.<Address>emptySet());
         else
