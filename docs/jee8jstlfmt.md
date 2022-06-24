@@ -78,7 +78,7 @@ if it does not find that it looks for
 and finally if that is not found it switches to a fall back locale US English in my case 
  		
 
-    CharityAddressBook-messages_en_US.properties
+[CharityAddressBook-messages_en_US.properties](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-address-book/src/main/resources/CharityAddressBook-messages_en_US.properties)
 
 
 In our case we will follow the option of Maven convention over configuration and place our resource bundle file
@@ -96,12 +96,12 @@ We change the ListServlet to account for a new language option as follows:
 
 Then we update base.jspf with the new i8n taglib directive
 
-[Link here]()
+[https://github.com/NicorDesigns/javawebdevcourse/compare/master...jee8web-jstl-finish#diff-06cce8aedd0b0e920b201bec8be6d2cf86721b68d7996bbe56c34d02103b0d6b](https://github.com/NicorDesigns/javawebdevcourse/compare/master...jee8web-jstl-finish#diff-06cce8aedd0b0e920b201bec8be6d2cf86721b68d7996bbe56c34d02103b0d6b)
 
 
 and we update the list.jsp to enable internationalization and formatting of the dates
 
-[Link here]()
+[https://github.com/NicorDesigns/javawebdevcourse/compare/master...jee8web-jstl-finish#diff-12550320c88c0c356aacf0b0b5bf0ae4879b12bbb9f5bec29f439c0922833510](https://github.com/NicorDesigns/javawebdevcourse/compare/master...jee8web-jstl-finish#diff-12550320c88c0c356aacf0b0b5bf0ae4879b12bbb9f5bec29f439c0922833510)
 
 
 we will compile and run our app and have a look at
