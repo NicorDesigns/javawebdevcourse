@@ -91,6 +91,17 @@ these files should then be copied to the class path locations during our Maven B
 
 We change the ListServlet to account for a new language option as follows:
 
+[https://github.com/NicorDesigns/javawebdevcourse/commit/985eaae9ff3b466dc29ae2b5d69fb6c5a38ab686#diff-aa4158958031193c4f98f7459da1bfecb75124d211094361d785752a50cb545d](https://github.com/NicorDesigns/javawebdevcourse/commit/985eaae9ff3b466dc29ae2b5d69fb6c5a38ab686#diff-aa4158958031193c4f98f7459da1bfecb75124d211094361d785752a50cb545d)
+
+
+Then we update base.jspf with the new i8n taglib directive
+
+[Link here]()
+
+
+and we update the list.jsp to enable internationalization and formatting of the dates
+
+[Link here]()
 
 
 we will compile and run our app and have a look at

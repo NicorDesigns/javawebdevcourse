@@ -1,7 +1,7 @@
 package com.nicordesigns;
 
 import java.time.Instant;
-import java.time.MonthDay;
+import java.util.Date;
 
 public class Address implements Comparable<Address>
 {
@@ -13,12 +13,12 @@ public class Address implements Comparable<Address>
 
     private String webAddress;
 
-    private MonthDay registrationday;
+    private Date registrationday;
 
     private Instant dateCreated;
 
     public Address(String charityId, String charityName, String phoneNumber,
-                   String address, MonthDay registrationday,
+                   String address, Date registrationday,
                    Instant dateCreated)
     {
         this.charityId = charityId;
@@ -79,7 +79,8 @@ public class Address implements Comparable<Address>
     {
         this.dateCreated = dateCreated;
     }
-
+    
+    
     @Override
     public int compareTo(Address other)
     {
@@ -89,11 +90,11 @@ public class Address implements Comparable<Address>
         return last;
     }
 
-	public MonthDay getRegistrationday() {
+	public Date getRegistrationday() {
 		return registrationday;
 	}
 
-	public void setRegistrationday(MonthDay registrationday) {
+	public void setRegistrationday(Date registrationday) {
 		this.registrationday = registrationday;
 	}
 }

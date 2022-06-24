@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.jstl.core.Config;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.time.Instant;
-import java.time.Month;
-import java.time.MonthDay;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Locale;
 import java.util.SortedSet;
@@ -22,18 +22,22 @@ import java.util.TreeSet;
 )
 public class ListServlet extends HttpServlet
 {
-    private static final SortedSet<Address> addresses = new TreeSet<>();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final SortedSet<Address> addresses = new TreeSet<>();
 
     static {
         addresses.add(new Address("1", "Zisize Care Centre", "+27 1 83 3160369", "https://www.facebook.com/ZISIZE",
-                MonthDay.of(Month.JUNE, 5),
+        		Calendar.getInstance().getTime(), //Old Date prior to Java 8 
                 Instant.parse("2022-06-05T21:22:23Z")
         ));
         addresses.add(new Address( "2", "UMCA", "+27 21 887 0212", "http://vcsv.co.za/",
-                null, Instant.parse("2022-06-05T15:31:17Z")
+        		Date.from(Instant.now()), Instant.parse("2022-06-05T15:31:17Z")
         ));
         addresses.add(new Address("3", "Diaconia", "+27 21 957 7113", "http://www.diaconia.co.za/",
-                MonthDay.of(Month.JUNE, 5),
+        		Calendar.getInstance().getTime(), //Old Date prior to Java 8
                 Instant.parse("2022-06-05T01:45:01Z")
         ));
     }

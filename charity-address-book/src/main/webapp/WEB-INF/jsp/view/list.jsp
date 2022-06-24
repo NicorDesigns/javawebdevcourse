@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Charity Address Book</title>
+        <title><fmt:message key="title.browser" /></title>
     </head>
     <body>
-        <h2>Charity Address Book</h2>
+        <h2><fmt:message key="title.page" /></h2>
         <c:choose>
             <c:when test="${fn:length(addresses) == 0}">
-                <i>There are no charities in the address book.</i>
+                <i><fmt:message key="message.noContacts" /></i>
             </c:when>
             <c:otherwise>
                 <c:forEach items="${addresses}" var="charity">
@@ -18,9 +18,13 @@
                     <c:out value="${charity.address}" /><br />
                     <c:out value="${charity.phoneNumber}" /><br />
                     <c:if test="${charity.registrationday != null}">
-                        Registration day: ${charity.registrationday}<br />
+                        <fmt:message key="label.registrationday" />:
+                    	${charity.registrationday}<br />
                     </c:if>
-                    Created: ${charity.dateCreated}<br /><br />
+                    <fmt:message key="label.creationDate" />:
+                    <fmt:parseDate  value="${charity.dateCreated}"  type="date" pattern="yyyy-MM-dd" var="parsedDate" />
+					<fmt:formatDate value="${parsedDate}" type="date" pattern="dd.MM.yyyy" var="stdDatum" />	    
+                    ${stdDatum}<br /><br />
                 </c:forEach>
             </c:otherwise>
         </c:choose>
