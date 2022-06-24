@@ -19,7 +19,8 @@
                     <c:out value="${charity.phoneNumber}" /><br />
                     <c:if test="${charity.registrationday != null}">
                         <fmt:message key="label.registrationday" />:
-                    	${charity.registrationday}<br />
+                        <fmt:formatDate pattern="dd-MM-yyyy" value="${charity.registrationday}" />
+                    	<br />
                     </c:if>
                     <fmt:message key="label.creationDate" />:
                     <fmt:parseDate  value="${charity.dateCreated}"  type="date" pattern="yyyy-MM-dd" var="parsedDate" />
