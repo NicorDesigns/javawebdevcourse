@@ -1,4 +1,4 @@
-# Internationaizarion Tags
+# Internationalization Tags
 
 	<fmt:message>
 		
@@ -111,6 +111,7 @@ we will compile and run our app and have a look at
 and
 
 [http://localhost:8080/charity-address-book/list?language=afrikaans](http://localhost:8080/charity-address-book/list?language=afrikaans)
+
 [http://localhost:8080/charity-address-book/list?language=afrikaans&empty](http://localhost:8080/charity-address-book/list?language=afrikaans&empty)
 
 

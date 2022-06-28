@@ -46,10 +46,17 @@ public class ListServlet extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+    	Locale locale = request.getLocale();
+    	//String language = locale.getLanguage();
+    	String country = locale.getCountry();
     	String language = request.getParameter("language");
-        if("afrikaans".equalsIgnoreCase(language))
-            Config.set(request, Config.FMT_LOCALE, Locale.forLanguageTag("af-ZA"));
         
+    	
+    	if("afrikaans".equalsIgnoreCase(language)) {
+            Config.set(request, Config.FMT_LOCALE, Locale.forLanguageTag("af-ZA"));
+    	} else if (country.equalsIgnoreCase("ZA")) {
+    		Config.set(request, Config.FMT_LOCALE, Locale.forLanguageTag("en-ZA"));
+    	}
         
         if(request.getParameter("empty") != null)
             request.setAttribute("addresses", Collections.<Address>emptySet());
