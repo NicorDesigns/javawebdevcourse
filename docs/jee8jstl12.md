@@ -9,7 +9,7 @@
 
 #### 3. [Using the Formatting and Internationalization Tag Library](jee8jstlfmt.md) 
 
-#### 4. Using the Database Access Tag Library
+#### 4. [Using the Database Access Tag Library](jee8jstlsql.md)
 
 #### 5. Using the XML Processing Tag Library
 
