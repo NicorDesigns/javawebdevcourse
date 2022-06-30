@@ -11,7 +11,7 @@
 
 #### 4. [Using the Database Access Tag Library](jee8jstlsql.md)
 
-#### 5. Using the XML Processing Tag Library
+#### 5. [Using the XML Processing Tag Library](jee8jstlxml.md)
 
 #### 6. Replacing Java Code with JSP Tags
 
