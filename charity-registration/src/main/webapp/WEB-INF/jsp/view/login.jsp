@@ -1,3 +1,4 @@
+<%--@elvariable id="loginFailed" type="java.lang.Boolean"--%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,17 +7,10 @@
     <body>
         <h2>Login</h2>
         You must log in to access the charity registration site.<br /><br />
-        <!-- On login failed returned from the login Servlet -->
-        <%
-            
-            if(((Boolean)request.getAttribute("loginFailed")))
-            {
-                %>
-        <b>The user name or password you entered are not correct. Please try
-            again.</b><br /><br />
-                <%
-            }
-        %>
+        <c:if test="${loginFailed}">
+            <b>The user name and password you entered are not correct. Please try
+                again.</b><br /><br />
+        </c:if>
         <form method="POST" action="<c:url value="/login" />">
             User name<br />
             <input type="text" name="username" /><br /><br />
