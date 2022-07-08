@@ -13,5 +13,6 @@
     <module>session-activity</module>
     <module>user-profile</module>
     <module>charity-address-book</module>
+    <module>charity-custom-tags</module>
   </modules>
 </project>
