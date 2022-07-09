@@ -10,7 +10,7 @@ We create a Custom Tag example following along with the official Oracle document
 ### 1.  Project Creation
 
 
-First we create a [charity-custom-tags](charity-custom-tags) example project using the Maven Web Archetype Template 
+First we create a [charity-custom-tags](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-jstl-finish/charity-custom-tags) example project using the Maven Web Archetype Template 
 
 Then we update the following in the web.xml deployment descriptor:
 
@@ -32,31 +32,25 @@ so we will have to add this dependency to our charity registration example.
 
 ### 2.  JSP Custom Tags
 
-We want to be able to Format a display date in a variety of ways depending on our International User base
+We want to be able to format a display date in a variety of ways depending on our International User base
 
-wherein we create the 
+wherein we create the **formatDate** tag in the [nicordesigns.tld](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-custom-tags/src/main/webapp/WEB-INF/tld/nicordesigns.tld) tag library definition file, then we can use it in our JSP page as follows:
 
-[formatDate](formatDate) tag in the [nicordesigns.tld](nicordesigns.tld)
-
-then we can use it in our JSP page as follows:
-
-	<nicordesigns:formatDate value="${entry.value.dateCreated}" type="both"                                timeStyle="short" dateStyle="medium" />
-
-	<nicordesigns:formatDate value="${ticket.dateCreated}" type="both"                            timeStyle="long" dateStyle="full" />
+**Dates View** [dates.jsp](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-custom-tags/src/main/webapp/WEB-INF/jsp/view/dates.jsp)
 
 ### 3.  JSP Custom Tag Handler
 
-The back-end or supporting code for our formatDate tag will be an implementation of the
-`javax.servlet.jsp.tagext.TagSupport` class that override the important methods.
+The back-end or supporting code for our **formatDate** tag will be an implementation of the [javax.servlet.jsp.tagext.TagSupport](https://javaee.github.io/javaee-spec/javadocs/javax/servlet/jsp/tagext/TagSupport.html) class that override the important methods.
 
 We override **doEndTag** to get a custom formatted date.
 
-`TagSupport` provide methods through which we can get JspWriter object and write data to the response. We will generate the formatted string using **formatDate** and then write it to response. The final implementation is given below.
+**TagSupport** provide methods through which we can get JspWriter object and write data to the response. 
+We will generate the formatted string using **formatDate.java** and then write it to response. The final implementation is given below.
 
-[FormatDateTag](formatDateTag)
+[FormatDateTag.java](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-custom-tags/src/main/java/com/nicordesigns/tag/FormatDateTag.java)
 
 
-Then we copy the [FormatDateTag](FormatDateTag) class and the [nicordesigns.tld](nicordesigns.tld) file from  our [charity-custom-tags]() project to our [charity-registration]() project.
+Then we copy the [FormatDateTag](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-custom-tags/src/main/java/com/nicordesigns/tag/FormatDateTag.java) class and the [nicordesigns.tld](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-custom-tags/src/main/webapp/WEB-INF/tld/nicordesigns.tld) file from  our [charity-custom-tags](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-jstl-finish/charity-custom-tags) project to our [charity-registration](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-jstl-finish/charity-registration) project.
 
 We add another function to the TLD by first creating a new [TimeUtils](TimeUtils.java) Java utility helper class.
 
