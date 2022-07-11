@@ -8,8 +8,7 @@
 <html>
     <head>
         <title>Charity Registration :: <c:out value="${fn:trim(htmlTitle)}" /></title>
-        <link rel="stylesheet"
-              href="<c:url value="/resource/stylesheet/main.css" />" />
+        <link rel="stylesheet" href="<c:url value="/resource/stylesheet/main.css" />" />
         <jsp:invoke fragment="headContent" />
     </head>
     <body>

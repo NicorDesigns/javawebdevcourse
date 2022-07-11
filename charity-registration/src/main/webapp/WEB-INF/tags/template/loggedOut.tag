@@ -4,8 +4,7 @@
 <%@ include file="/WEB-INF/jsp/base.jspf" %>
 <template:main htmlTitle="${htmlTitle}" bodyTitle="${bodyTitle}">
     <jsp:attribute name="headContent">
-        <link rel="stylesheet"
-              href="<c:url value="/resource/stylesheet/login.css" />" />
+        <link rel="stylesheet" href="<c:url value="/resource/stylesheet/login.css" />" />
     </jsp:attribute>
     <jsp:attribute name="navigationContent" />
     <jsp:body>

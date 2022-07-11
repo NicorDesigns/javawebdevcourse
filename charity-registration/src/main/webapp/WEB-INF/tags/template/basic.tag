@@ -9,10 +9,10 @@
         <jsp:invoke fragment="extraHeadContent" />
     </jsp:attribute>
     <jsp:attribute name="navigationContent">
-        <a href="<c:url value="/tickets" />">List Tickets</a><br />
-        <a href="<c:url value="/tickets">
+        <a href="<c:url value="/registrations" />">List Registered Charities</a><br />
+        <a href="<c:url value="/registrations">
             <c:param name="action" value="create" />
-        </c:url>">Create a Ticket</a><br />
+        </c:url>">Register a Charity</a><br />
         <a href="<c:url value="/sessions" />">List Sessions</a><br />
         <a href="<c:url value="/login?logout" />">Log Out</a><br />
         <jsp:invoke fragment="extraNavigationContent" />

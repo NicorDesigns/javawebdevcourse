@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Charity Associate Support</title>
-    </head>
-    <body>
-        <a href="<c:url value="/login?logout" />">Logout</a>
-        <h2>Create a Registration</h2>
+<template:basic htmlTitle="Register a Charity" bodyTitle="Register a Charity">
         <form method="POST" action="registrations" enctype="multipart/form-data">
             <input type="hidden" name="action" value="create"/>
-            
             Subject<br/>
             <input type="text" name="subject"><br/><br/>
             Body<br/>
@@ -17,5 +9,5 @@
             <input type="file" name="file"/><br/><br/>
             <input type="submit" value="Submit"/>
         </form>
-    </body>
-</html>
+</template:basic>        
+        
