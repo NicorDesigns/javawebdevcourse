@@ -67,8 +67,10 @@ Then [loggedout.tag](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8w
 and also [basic.tag](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-registration/src/main/webapp/WEB-INF/tags/template/basic.tag)
 Notice that main tags forms the base and the other tags build up on that base, and that we make use of CSS files
 
+We also expand the [Registration.java](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-registration/src/main/java/com/nicordesigns/Registration.java) class and the [RegistrationServlet.java](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-registration/src/main/java/com/nicordesigns/RegistrationServlet.java)
 
 
+Then we test and run our web application with the updated custom tags. 
  	 
 
 
