@@ -70,9 +70,11 @@ Notice that main tags forms the base and the other tags build up on that base, a
 We also expand the [Registration.java](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-registration/src/main/java/com/nicordesigns/Registration.java) class and the [RegistrationServlet.java](https://github.com/NicorDesigns/javawebdevcourse/blob/jee8web-jstl-finish/charity-registration/src/main/java/com/nicordesigns/RegistrationServlet.java)
 
 
-Then we test and run our web application with the updated custom tags. 
+Then we test and run our web application with the updated custom tags:
+ 
+	http://localhost:8080/charity-registration/login
  	 
-
+We register a couple of charities and ensure that everything runs as expected.
 
 
 
