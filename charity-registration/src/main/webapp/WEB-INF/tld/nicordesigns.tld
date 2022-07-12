@@ -154,7 +154,7 @@
             second" or "ten seconds" or "about 12 minutes".
         </description>
         <name>timeIntervalToString</name>
-        <function-class>com.wrox.TimeUtils</function-class>
+        <function-class>com.nicordesigns.TimeUtils</function-class>
         <function-signature>
             java.lang.String intervalToString(long)
         </function-signature>

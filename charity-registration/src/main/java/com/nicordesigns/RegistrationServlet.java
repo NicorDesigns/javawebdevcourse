@@ -3,6 +3,7 @@ package com.nicordesigns;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ import javax.servlet.http.Part;
 		maxRequestSize = 41_943_040L // 40MB
 )
 public class RegistrationServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 4441314868375700166L;
 
 	private volatile int REGISTRATION_ID_SEQUENCE = 1;
@@ -38,8 +40,7 @@ public class RegistrationServlet extends HttpServlet {
             response.sendRedirect("login");
             return;
         } 
-    	
-    	
+    	    	
     	
 		String action = request.getParameter("action");
 		if (action == null)
@@ -149,6 +150,7 @@ public class RegistrationServlet extends HttpServlet {
 		
 		registration.setSubject(request.getParameter("subject"));
 		registration.setBody(request.getParameter("body"));
+		registration.setDateCreated(Instant.now());
 
 		Part filePart = request.getPart("file");
 		if (filePart != null && filePart.getSize() > 0) {

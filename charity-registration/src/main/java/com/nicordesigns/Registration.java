@@ -1,5 +1,6 @@
 package com.nicordesigns;
 
+import java.time.Instant;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -11,6 +12,8 @@ public class Registration
     private String subject;
 
     private String body;
+    
+    private Instant dateCreated;
 
     private Map<String, Attachment> attachments = new LinkedHashMap<>();
 
@@ -42,6 +45,17 @@ public class Registration
     public void setBody(String body)
     {
         this.body = body;
+    }
+    
+    public Instant getDateCreated()
+    {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Instant dateCreated)
+    
+    {
+        this.dateCreated = dateCreated;
     }
 
     public Attachment getAttachment(String name)
