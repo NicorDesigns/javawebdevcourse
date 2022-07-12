@@ -2,9 +2,17 @@
 <%--@elvariable id="registration" type="com.nicordesigns.Registration"--%>
 <template:basic htmlTitle="${registration.subject}"
 	bodyTitle="Ticket #${registrationId}: ${registration.subject}">
+
+
 	<i><c:out value="${registration.userName}" /></i>
 	<br />
+	Created <nicordesigns:formatDate value="${registration.dateCreated}"
+		type="both" timeStyle="long" dateStyle="full" />
+	</i>
 	<br />
+	<br />
+	<br />
+
 	<c:out value="${registration.body}" />
 	<br />
 	<br />
