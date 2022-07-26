@@ -1,19 +1,16 @@
-### Jakarta Standard Tag Library 1.2
+### Using Filters with Jakarta JEE8 Web Development
 
-##### [Jakarta Standard Tag Library Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/j2ee8web-jstl-start)
+##### [Jakarta JEE8 Filters Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-filters-start)
 
-#### 1. [Introducing JSTL tags in JSP](jee8jstlintro.md)
+#### 1. [Understanding the purpose of Filters](jee8filterpurpose.md)
 
-#### 2. [Using the Core Tag Library](jee8jstlcore.md)
+#### 2. [Creating, Declaring and Mapping Filters](jee8filterconfig.md)
 
-#### 3. [Using the Formatting and Internationalization Tag Library](jee8jstlfmt.md) 
+#### 3. [Ordering your Filters Properly](jee8filterorder.md) 
 
 #### 4. [Using the Database Access Tag Library](jee8jstlsql.md)
 
-#### 5. [Using the XML Processing Tag Library](jee8jstlxml.md)
 
-#### 6. [Replacing Java Code with JSP Tags](jee8jstlcustomtags.md)
-
-##### [Jakarta Standard Tag Library Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-jstl-finish)
+##### [Jakarta JEE8 Filters Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-filters-end)
     
 
