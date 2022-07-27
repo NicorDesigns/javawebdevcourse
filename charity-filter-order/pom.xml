@@ -24,20 +24,19 @@
 	</properties>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
 		<dependency>
-		    <groupId>jakarta.servlet</groupId>
-		    <artifactId>jakarta.servlet-api</artifactId>
-		    <version>4.0.4</version>
-		    <scope>provided</scope>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+			<scope>provided</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp/jakarta.servlet.jsp-api -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
 		<dependency>
-		    <groupId>jakarta.servlet.jsp</groupId>
-		    <artifactId>jakarta.servlet.jsp-api</artifactId>
-		    <version>3.0.0</version>
-		    <scope>provided</scope>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.3</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -47,19 +46,20 @@
 			<scope>compile</scope>
 			<exclusions>
 				<exclusion>
-					<groupId>jakarta.servlet</groupId>
+					<groupId>javax.servlet</groupId>
 					<artifactId>servlet-api</artifactId>
 				</exclusion>
 				<exclusion>
-					<groupId>jakarta.servlet.jsp</groupId>
+					<groupId>javax.servlet.jsp</groupId>
 					<artifactId>jsp-api</artifactId>
 				</exclusion>
 				<exclusion>
-					<groupId>jakarta.servlet.jsp.jstl</groupId>
+					<groupId>javax.servlet.jsp.jstl</groupId>
 					<artifactId>jstl-api</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
+
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -97,7 +97,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>charity-filter-order</finalName>
+		<finalName>charity-charity-filter-order</finalName>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
 				defaults (may be moved to parent pom) -->
 			<plugins>
