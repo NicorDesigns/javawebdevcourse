@@ -14,6 +14,6 @@
     <module>user-profile</module>
     <module>charity-address-book</module>
     <module>charity-custom-tags</module>
-    <module>filter-order</module>
+    <module>charity-filter-order</module>
   </modules>
 </project>

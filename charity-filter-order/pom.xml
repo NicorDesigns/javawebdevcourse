@@ -10,11 +10,11 @@
     <version>0.0.2-SNAPSHOT</version>
   </parent>
 
-  <artifactId>filter-order</artifactId>
+  <artifactId>charity-filter-order</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>filter-order</name>
+  <name>charity-filter-order</name>
   <description>Demonstration on how Filter Order Works</description>
 
 	<properties>
@@ -24,19 +24,20 @@
 	</properties>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.1</version>
-			<scope>provided</scope>
+		    <groupId>jakarta.servlet</groupId>
+		    <artifactId>jakarta.servlet-api</artifactId>
+		    <version>4.0.4</version>
+		    <scope>provided</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+		<!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp/jakarta.servlet.jsp-api -->
 		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>2.3.3</version>
-			<scope>provided</scope>
+		    <groupId>jakarta.servlet.jsp</groupId>
+		    <artifactId>jakarta.servlet.jsp-api</artifactId>
+		    <version>3.0.0</version>
+		    <scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -46,15 +47,15 @@
 			<scope>compile</scope>
 			<exclusions>
 				<exclusion>
-					<groupId>javax.servlet</groupId>
+					<groupId>jakarta.servlet</groupId>
 					<artifactId>servlet-api</artifactId>
 				</exclusion>
 				<exclusion>
-					<groupId>javax.servlet.jsp</groupId>
+					<groupId>jakarta.servlet.jsp</groupId>
 					<artifactId>jsp-api</artifactId>
 				</exclusion>
 				<exclusion>
-					<groupId>javax.servlet.jsp.jstl</groupId>
+					<groupId>jakarta.servlet.jsp.jstl</groupId>
 					<artifactId>jstl-api</artifactId>
 				</exclusion>
 			</exclusions>
