@@ -10,7 +10,12 @@ import java.io.IOException;
 @WebServlet(name = "servletOne", urlPatterns = "/servletOne")
 public class ServletOne extends HttpServlet
 {
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3036189735048844656L;
+
+	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
