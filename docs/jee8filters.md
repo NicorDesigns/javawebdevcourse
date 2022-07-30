@@ -8,8 +8,11 @@
 
 #### 3. [Ordering your Filters Properly](jee8filterorder.md) 
 
-#### 4. [Using the Database Access Tag Library](jee8jstlsql.md)
+#### 4. [Exploring Filter Order with a Code Example](jee8filterexample.md)
 
+#### 5. [Investigating Practical Uses for Filters](jee8praticalfilters.md)
+
+#### 6. [Simplifying Authentication with a Filter](jee8filterauthentication.md)
 
 ##### [Jakarta JEE8 Filters Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-filters-end)
     
