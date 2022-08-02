@@ -29,4 +29,16 @@ Response data is first written to a GZipOutputStream and then when the requests 
 
 The Responsewrapper also overwrites setContentLength() and setContentLengthLong() to prevent the Content Length to be set, because the length can obviously not be known before it is compressed.
 
-The wrapper pattern is commonly used in Java Web Filters more so for Resonses as in our Compression example than for Requests. The common application for filters are for encrypting and decrypting request, for authentication and authorization of access to resources and services and also of cause logging and debugging for an extended set of cloud based microservices.
+The wrapper pattern is commonly used in Java Web Filters more so for Resonses as in our Compression example than for Requests. The common application for filters are for encrypting and decrypting request, for authentication and authorization of access to resources and services and also of cause logging and debugging for an extended set of cloud based micro services.
+
+We launch and run our web application in Tomcat 9
+
+http://localhost:8080/charity-compression-filter/
+
+http://localhost:8080/charity-compression-filter/servlet
+
+now we will use our browsers development tools to look at the Content headers and so forth
+
+
+
+

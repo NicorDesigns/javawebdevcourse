@@ -34,12 +34,13 @@ public class RegistrationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		//Check that the Users are logged in
-    	if(request.getSession().getAttribute("username") == null)
-        {
-            response.sendRedirect("login");
-            return;
-        } 
+		//Using Filters is the proper way to Authenticate Users
+//		//Check that the Users are logged in
+//    	if(request.getSession().getAttribute("username") == null)
+//        {
+//            response.sendRedirect("login");
+//            return;
+//        } 
     	    	
     	
 		String action = request.getParameter("action");
@@ -66,12 +67,14 @@ public class RegistrationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		//Using Filters is the proper way to Authenticate Users
+		
 		//Check that the Users are logged in
-    	if(request.getSession().getAttribute("username") == null)
-        {
-            response.sendRedirect("login");
-            return;
-        } 
+//    	if(request.getSession().getAttribute("username") == null)
+//        {
+//            response.sendRedirect("login");
+//            return;
+//        } 
     	
 		
 		String action = request.getParameter("action");
