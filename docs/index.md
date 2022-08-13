@@ -32,6 +32,11 @@ An introduction to Java Web Development with JEE 8:
 
 15. [Improving our JEE 8 Web Application using Filters](jee8filters.md)
 
+16. [Making your Application Interactive with WebSockets](jee8websockets.md)
+
+
+
+
 
 
 
