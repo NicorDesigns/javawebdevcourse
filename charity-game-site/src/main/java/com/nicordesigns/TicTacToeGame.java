@@ -32,11 +32,21 @@ public class TicTacToeGame
         return id;
     }
 
+    /**
+     * Get player 1 name
+     * 
+     * @return String
+     */
     public String getPlayer1()
     {
         return player1;
     }
 
+    /**
+     * Get player 2 name
+     * 
+     * @return String
+     */
     public String getPlayer2()
     {
         return player2;
@@ -47,44 +57,72 @@ public class TicTacToeGame
         return nextMove == Player.PLAYER1 ? player1 : player2;
     }
 
+    /**
+     * Is the Game Over?
+     * @return
+     */
     public boolean isOver()
     {
         return over;
     }
 
+    /**
+     * Is the game a tie?
+     * 
+     * @return
+     */
     public boolean isDraw()
     {
         return draw;
     }
 
+    /**
+     * Get the winning player
+     * @return
+     */
     public Player getWinner()
     {
         return winner;
     }
 
+    /**
+     * Check if the move is legal, executes the move and calls method to check if the game is over and who is the winner
+     * @param player
+     * @param row
+     * @param column
+     */
     @JsonIgnore
     public synchronized void move(Player player, int row, int column)
     {
+    	//Is it the players turn?
         if(player != this.nextMove)
             throw new IllegalArgumentException("It is not your turn!");
 
+        //Is it a valid board placement?
         if(row > 2 || column > 2)
             throw new IllegalArgumentException("Row and column must be 0-3.");
 
+        //Is the board position already occupied?
         if(this.grid[row][column] != null)
             throw new IllegalArgumentException("Move already made at " + row + ","
                     + column);
 
+        //Play or place the move 
         this.grid[row][column] = player;
-        this.nextMove =
+        this.nextMove = // Determine which player gets the next move
                 this.nextMove == Player.PLAYER1 ? Player.PLAYER2 : Player.PLAYER1;
+        //Call method to calculate the winner
         this.winner = this.calculateWinner();
         if(this.getWinner() != null || this.isDraw())
-            this.over = true;
+            this.over = true; // determine if game is over
         if(this.isOver())
-            TicTacToeGame.activeGames.remove(this.id);
+            TicTacToeGame.activeGames.remove(this.id); //Remove active game from Hash Table
     }
 
+    /**
+     * 
+     * @param player
+     */
     public synchronized void forfeit(Player player)
     {
         TicTacToeGame.activeGames.remove(this.id);
@@ -92,6 +130,11 @@ public class TicTacToeGame
         this.over = true;
     }
 
+    /**
+     * Calculate who wins
+     * 
+     * @return
+     */
     private Player calculateWinner()
     {
         boolean draw = true;
@@ -127,12 +170,21 @@ public class TicTacToeGame
         return null;
     }
 
+    /**
+     * Get the Pending Games
+     * @return
+     */
     @SuppressWarnings("unchecked")
     public static Map<Long, String> getPendingGames()
     {
         return (Map<Long, String>)TicTacToeGame.pendingGames.clone();
     }
 
+    /**
+     * Queue up a game
+     * @param user1
+     * @return
+     */
     public static long queueGame(String user1)
     {
         long id = TicTacToeGame.gameIdSequence++;
@@ -140,11 +192,23 @@ public class TicTacToeGame
         return id;
     }
 
+    /**
+     * Remove a queued game.
+     * 
+     * @param queuedId
+     */
     public static void removeQueuedGame(long queuedId)
     {
         TicTacToeGame.pendingGames.remove(queuedId);
     }
 
+    /**
+     * Starting the Game
+     * 
+     * @param queuedId
+     * @param user2
+     * @return
+     */
     public static TicTacToeGame startGame(long queuedId, String user2)
     {
         String user1 = TicTacToeGame.pendingGames.remove(queuedId);
@@ -153,6 +217,12 @@ public class TicTacToeGame
         return game;
     }
 
+    /**
+     * Get the Active Game
+     * 
+     * @param gameId
+     * @return
+     */
     public static TicTacToeGame getActiveGame(long gameId)
     {
         return TicTacToeGame.activeGames.get(gameId);

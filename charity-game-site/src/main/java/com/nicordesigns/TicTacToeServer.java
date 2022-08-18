@@ -20,14 +20,22 @@ public class TicTacToeServer
     private static Map<Long, Game> games = new Hashtable<>();
     private static ObjectMapper mapper = new ObjectMapper();
 
+    /**
+     * Gets the Game Id and User Name from the path parameters.
+     * 
+     * @param session
+     * @param gameId
+     * @param username
+     */
     @OnOpen
     public void onOpen(Session session, @PathParam("gameId") long gameId,
                        @PathParam("username") String username)
     {
         try
         {
+        	
             TicTacToeGame ticTacToeGame = TicTacToeGame.getActiveGame(gameId);
-            if(ticTacToeGame != null)
+            if(ticTacToeGame != null) //Is the user joining an existing game?
             {
                 session.close(new CloseReason(
                         CloseReason.CloseCodes.UNEXPECTED_CONDITION,
@@ -39,14 +47,14 @@ public class TicTacToeServer
             if(actions != null && actions.size() == 1)
             {
                 String action = actions.get(0);
-                if("start".equalsIgnoreCase(action))
+                if("start".equalsIgnoreCase(action)) // User is starting a new Game
                 {
                     Game game = new Game();
                     game.gameId = gameId;
                     game.player1 = session;
                     TicTacToeServer.games.put(gameId, game);
                 }
-                else if("join".equalsIgnoreCase(action))
+                else if("join".equalsIgnoreCase(action)) //User is joining an existing game
                 {
                     Game game = TicTacToeServer.games.get(gameId);
                     game.player2 = session;
@@ -71,6 +79,13 @@ public class TicTacToeServer
         }
     }
 
+    /**
+     * This method is called when the player has made a move and sent it to the WbSocket End-point
+     * The move gets registered with the TicTacToe Game class,   
+     * @param session
+     * @param message
+     * @param gameId
+     */
     @OnMessage
     public void onMessage(Session session, String message,
                           @PathParam("gameId") long gameId)
@@ -81,15 +96,16 @@ public class TicTacToeServer
         try
         {
             Move move = TicTacToeServer.mapper.readValue(message, Move.class);
-            game.ticTacToeGame.move(
+            game.ticTacToeGame.move( //Register the incoming move with the TicTacToe Game
                     isPlayer1 ? TicTacToeGame.Player.PLAYER1 :
                             TicTacToeGame.Player.PLAYER2,
                     move.getRow(),
                     move.getColumn()
             );
             this.sendJsonMessage((isPlayer1 ? game.player2 : game.player1), game,
-                    new OpponentMadeMoveMessage(move));
-            if(game.ticTacToeGame.isOver())
+                    new OpponentMadeMoveMessage(move)); // Send a message to the opponent player that the player made a move
+            
+            if(game.ticTacToeGame.isOver()) // When the game is over send a message of the play result to both players
             {
                 if(game.ticTacToeGame.isDraw())
                 {
@@ -107,6 +123,7 @@ public class TicTacToeServer
                     this.sendJsonMessage(game.player2, game,
                             new GameOverMessage(!wasPlayer1));
                 }
+                //Close the Sessions for both games
                 game.player1.close();
                 game.player2.close();
             }
@@ -117,6 +134,12 @@ public class TicTacToeServer
         }
     }
 
+    /**
+     * Called when a WebSocket connection is closed.
+     * Check to see if a player closed the connection and then makes him forfet the game 
+     * @param session
+     * @param gameId
+     */
     @OnClose
     public void onClose(Session session, @PathParam("gameId") long gameId)
     {
