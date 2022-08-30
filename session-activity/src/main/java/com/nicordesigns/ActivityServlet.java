@@ -17,12 +17,7 @@ import java.util.Vector;
 )
 public class ActivityServlet extends HttpServlet
 {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = -6775967155118931064L;
-
-	@Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {

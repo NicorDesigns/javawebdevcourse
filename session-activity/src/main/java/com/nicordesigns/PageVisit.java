@@ -5,12 +5,7 @@ import java.net.InetAddress;
 
 public class PageVisit implements Serializable
 {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 6220320744866331885L;
-
-	private long enteredTimestamp;
+    private long enteredTimestamp;
 
     private Long leftTimestamp;
 
