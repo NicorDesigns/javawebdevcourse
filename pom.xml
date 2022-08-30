@@ -7,12 +7,10 @@
   <packaging>pom</packaging>
   <name>javawebdev</name>
   <modules>
-    <module>charity-admin</module>
     <module>jee8webarchetype</module>
     <module>charity-registration</module>
     <module>charity-session</module>
     <module>session-activity</module>
-    <module>charity-admin</module>
-
+    <module>MariaDBConnect</module>
   </modules>
 </project>
