@@ -12,6 +12,6 @@
 
 #### 5. [Adding Chat Support to the Charity Registration Web App](jee8websocketchat.md)
 
-##### [Jakarta JEE8 WeSockets Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-websockets-end)
+##### [Jakarta JEE8 WeSockets Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-websockets-finish)
     
 
