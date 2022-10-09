@@ -16,5 +16,6 @@
     <module>charity-custom-tags</module>
     <module>charity-filter-order</module>
     <module>charity-compression-filter</module>
+    <module>charity-game-site</module>
   </modules>
 </project>
