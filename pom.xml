@@ -17,6 +17,7 @@
     <module>charity-filter-order</module>
     <module>charity-compression-filter</module>
     <module>MariaDBConnect</module>
+    <module>charity-gaming-site</module>
   </modules>
   
   <build>
