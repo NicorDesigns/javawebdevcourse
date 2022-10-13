@@ -34,7 +34,7 @@ An introduction to Java Web Development with JEE 8:
 
 16. [Making your Application Interactive with WebSockets](jee8websockets.md)
 
-
+17. [Using Logging to Monitor your application](jee8logging.md)
 
 
 
