@@ -1,6 +1,6 @@
-### Using logging in our Jakarta JEE8 Web Application
+### Making your Jakarta JEE8 Web Application interactive with WebSockets
 
-##### [Jakarta JEE8 Logging Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-websockets-start)
+##### [Jakarta JEE8 WebSockets Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-websockets-start)
 
 #### 1. [Evolution from Ajax to WebSockets](jee8ajaxevo.md)
 
@@ -12,6 +12,6 @@
 
 #### 5. [Adding Chat Support to the Charity Registration Web App](jee8websocketchat.md)
 
-##### [Jakarta JEE8 Logging Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-websockets-end)
+##### [Jakarta JEE8 WeSockets Finish Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-websockets-end)
     
 
