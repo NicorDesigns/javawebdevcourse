@@ -2,9 +2,9 @@
 
 Use these (but for JEE8) to update these code examples:
 
-https://docs.oracle.com/javaee/7/tutorial/servlets012.htm
+[https://docs.oracle.com/javaee/7/tutorial/servlets012.htm](https://docs.oracle.com/javaee/7/tutorial/servlets012.htm)
 
-https://docs.oracle.com/javaee/7/tutorial/concurrency-utilities002.htm
+[https://docs.oracle.com/javaee/7/tutorial/concurrency-utilities002.htm](https://docs.oracle.com/javaee/7/tutorial/servlets012.htm)
 
 
 ##### [JEE 8 Multi-threading Start Branch](https://github.com/NicorDesigns/javawebdevcourse/tree/jee8web-file-upload-start)
