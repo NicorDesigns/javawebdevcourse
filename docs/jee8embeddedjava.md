@@ -4,6 +4,8 @@ Use these (but for JEE8) to update these code examples:
 
 https://jakarta.ee/specifications/pages/3.0/jakarta-server-pages-spec-3.0.html#implicit-objects
 
+https://docs.oracle.com/javaee/5/tutorial/doc/bnahl.html#bnahm
+
 
 We will explore how to use Java within JSP and find out why it is actually a bad idea
 
